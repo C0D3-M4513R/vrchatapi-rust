@@ -55,6 +55,10 @@ cat patches/InviteMessageType-Display.rs >> src/models/invite_message_type.rs
 #     }
 # }
 sed -z -i 's/impl ToString for InviteMessageType {\n[ a-zA-Z_\(\)&-\>{\n:=",]*}\n    }\n}//g' src/models/invite_message_type.rs
+# https://github.com/vrchatapi/specification/issues/241
+cat patches/2FA_Current_User.rs >> src/models/current_user.rs
+sed -i 's/pub use self::current_user::CurrentUser;/pub use self::current_user::{EitherUserOrTwoFactor, CurrentUser};/g' src/models/mod.rs
+sed -i 's/Result<crate::models::CurrentUser, Error<GetCurrentUserError>>/Result<crate::models::EitherUserOrTwoFactor, Error<GetCurrentUserError>>/g' src/apis/authentication_api.rs
 
 
 cargo build
