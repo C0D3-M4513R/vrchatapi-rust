@@ -9,7 +9,7 @@
 
 use reqwest;
 
-use crate::apis::ResponseContent;
+#[allow(unused_imports)] use crate::apis::ResponseContent;
 use super::{Error, configuration};
 
 
@@ -57,96 +57,29 @@ pub enum MarkNotificationAsReadError {
 
 /// Accept a friend request by notification `frq_` ID. Friend requests can be found using the NotificationsAPI `getNotifications` by filtering of type `friendRequest`.
 pub async fn accept_friend_request(configuration: &configuration::Configuration, notification_id: &str) -> Result<crate::models::Success, Error<AcceptFriendRequestError>> {
-    let local_var_configuration = configuration;
-
-    let local_var_client = &local_var_configuration.client;
-
-    let local_var_uri_str = format!("{}/auth/user/notifications/{notificationId}/accept", local_var_configuration.base_path, notificationId=crate::apis::urlencode(notification_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::PUT, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
-    }
-
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
-
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
-
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
-    } else {
-        let local_var_entity: Option<AcceptFriendRequestError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
-    }
+    let local_var_uri_str = format!("{}/auth/user/notifications/{notificationId}/accept", configuration.base_path, notificationId=crate::apis::urlencode(notification_id));
+    #[allow(unused_mut)] let mut local_var_req_builder = configuration.client.request(reqwest::Method::PUT, local_var_uri_str.as_str());
+    crate::request(configuration, local_var_req_builder, None::<()>).await
 }
 
 /// Clear **all** notifications.
 pub async fn clear_notifications(configuration: &configuration::Configuration, ) -> Result<crate::models::Success, Error<ClearNotificationsError>> {
-    let local_var_configuration = configuration;
-
-    let local_var_client = &local_var_configuration.client;
-
-    let local_var_uri_str = format!("{}/auth/user/notifications/clear", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::PUT, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
-    }
-
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
-
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
-
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
-    } else {
-        let local_var_entity: Option<ClearNotificationsError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
-    }
+    let local_var_uri_str = format!("{}/auth/user/notifications/clear", configuration.base_path);
+    #[allow(unused_mut)] let mut local_var_req_builder = configuration.client.request(reqwest::Method::PUT, local_var_uri_str.as_str());
+    crate::request(configuration, local_var_req_builder, None::<()>).await
 }
 
 /// Delete a notification.
 pub async fn delete_notification(configuration: &configuration::Configuration, notification_id: &str) -> Result<crate::models::Notification, Error<DeleteNotificationError>> {
-    let local_var_configuration = configuration;
-
-    let local_var_client = &local_var_configuration.client;
-
-    let local_var_uri_str = format!("{}/auth/user/notifications/{notificationId}/hide", local_var_configuration.base_path, notificationId=crate::apis::urlencode(notification_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::PUT, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
-    }
-
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
-
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
-
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
-    } else {
-        let local_var_entity: Option<DeleteNotificationError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
-    }
+    let local_var_uri_str = format!("{}/auth/user/notifications/{notificationId}/hide", configuration.base_path, notificationId=crate::apis::urlencode(notification_id));
+    #[allow(unused_mut)] let mut local_var_req_builder = configuration.client.request(reqwest::Method::PUT, local_var_uri_str.as_str());
+    crate::request(configuration, local_var_req_builder, None::<()>).await
 }
 
 /// Retrieve all of the current user's notifications.
 pub async fn get_notifications(configuration: &configuration::Configuration, r#type: Option<&str>, sent: Option<bool>, hidden: Option<bool>, after: Option<&str>, n: Option<i32>, offset: Option<i32>) -> Result<Vec<crate::models::Notification>, Error<GetNotificationsError>> {
-    let local_var_configuration = configuration;
-
-    let local_var_client = &local_var_configuration.client;
-
-    let local_var_uri_str = format!("{}/auth/user/notifications", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+    let local_var_uri_str = format!("{}/auth/user/notifications", configuration.base_path);
+    #[allow(unused_mut)] let mut local_var_req_builder = configuration.client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = r#type {
         local_var_req_builder = local_var_req_builder.query(&[("type", &local_var_str.to_string())]);
@@ -166,50 +99,13 @@ pub async fn get_notifications(configuration: &configuration::Configuration, r#t
     if let Some(ref local_var_str) = offset {
         local_var_req_builder = local_var_req_builder.query(&[("offset", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
-    }
-
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
-
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
-
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
-    } else {
-        let local_var_entity: Option<GetNotificationsError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
-    }
+    crate::request(configuration, local_var_req_builder, None::<()>).await
 }
 
 /// Mark a notification as seen.
 pub async fn mark_notification_as_read(configuration: &configuration::Configuration, notification_id: &str) -> Result<crate::models::Notification, Error<MarkNotificationAsReadError>> {
-    let local_var_configuration = configuration;
-
-    let local_var_client = &local_var_configuration.client;
-
-    let local_var_uri_str = format!("{}/auth/user/notifications/{notificationId}/see", local_var_configuration.base_path, notificationId=crate::apis::urlencode(notification_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::PUT, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
-    }
-
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
-
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
-
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
-    } else {
-        let local_var_entity: Option<MarkNotificationAsReadError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
-    }
+    let local_var_uri_str = format!("{}/auth/user/notifications/{notificationId}/see", configuration.base_path, notificationId=crate::apis::urlencode(notification_id));
+    #[allow(unused_mut)] let mut local_var_req_builder = configuration.client.request(reqwest::Method::PUT, local_var_uri_str.as_str());
+    crate::request(configuration, local_var_req_builder, None::<()>).await
 }
 

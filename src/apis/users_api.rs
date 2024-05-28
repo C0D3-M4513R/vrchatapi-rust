@@ -9,7 +9,7 @@
 
 use reqwest;
 
-use crate::apis::ResponseContent;
+#[allow(unused_imports)] use crate::apis::ResponseContent;
 use super::{Error, configuration};
 
 
@@ -73,152 +73,43 @@ pub enum UpdateUserError {
 
 /// Get public user information about a specific user using their ID.
 pub async fn get_user(configuration: &configuration::Configuration, user_id: &str) -> Result<crate::models::User, Error<GetUserError>> {
-    let local_var_configuration = configuration;
-
-    let local_var_client = &local_var_configuration.client;
-
-    let local_var_uri_str = format!("{}/users/{userId}", local_var_configuration.base_path, userId=crate::apis::urlencode(user_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
-    }
-
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
-
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
-
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
-    } else {
-        let local_var_entity: Option<GetUserError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
-    }
+    let local_var_uri_str = format!("{}/users/{userId}", configuration.base_path, userId=crate::apis::urlencode(user_id));
+    #[allow(unused_mut)] let mut local_var_req_builder = configuration.client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+    crate::request(configuration, local_var_req_builder, None::<()>).await
 }
 
 /// ~~Get public user information about a specific user using their name.~~  **DEPRECATED:** VRChat API no longer return usernames of other users. [See issue by Tupper for more information](https://github.com/pypy-vrc/VRCX/issues/429). This endpoint now require Admin Credentials.
 pub async fn get_user_by_name(configuration: &configuration::Configuration, username: &str) -> Result<crate::models::User, Error<GetUserByNameError>> {
-    let local_var_configuration = configuration;
-
-    let local_var_client = &local_var_configuration.client;
-
-    let local_var_uri_str = format!("{}/users/{username}/name", local_var_configuration.base_path, username=crate::apis::urlencode(username));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
-    }
-
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
-
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
-
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
-    } else {
-        let local_var_entity: Option<GetUserByNameError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
-    }
+    let local_var_uri_str = format!("{}/users/{username}/name", configuration.base_path, username=crate::apis::urlencode(username));
+    #[allow(unused_mut)] let mut local_var_req_builder = configuration.client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+    crate::request(configuration, local_var_req_builder, None::<()>).await
 }
 
 /// Returns a list of Groups the user has requested to be invited into.
 pub async fn get_user_group_requests(configuration: &configuration::Configuration, user_id: &str) -> Result<Vec<crate::models::Group>, Error<GetUserGroupRequestsError>> {
-    let local_var_configuration = configuration;
-
-    let local_var_client = &local_var_configuration.client;
-
-    let local_var_uri_str = format!("{}/users/{userId}/groups/requested", local_var_configuration.base_path, userId=crate::apis::urlencode(user_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
-    }
-
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
-
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
-
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
-    } else {
-        let local_var_entity: Option<GetUserGroupRequestsError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
-    }
+    let local_var_uri_str = format!("{}/users/{userId}/groups/requested", configuration.base_path, userId=crate::apis::urlencode(user_id));
+    #[allow(unused_mut)] let mut local_var_req_builder = configuration.client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+    crate::request(configuration, local_var_req_builder, None::<()>).await
 }
 
 /// Get user's public groups
 pub async fn get_user_groups(configuration: &configuration::Configuration, user_id: &str) -> Result<Vec<crate::models::LimitedUserGroups>, Error<GetUserGroupsError>> {
-    let local_var_configuration = configuration;
-
-    let local_var_client = &local_var_configuration.client;
-
-    let local_var_uri_str = format!("{}/users/{userId}/groups", local_var_configuration.base_path, userId=crate::apis::urlencode(user_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
-    }
-
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
-
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
-
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
-    } else {
-        let local_var_entity: Option<GetUserGroupsError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
-    }
+    let local_var_uri_str = format!("{}/users/{userId}/groups", configuration.base_path, userId=crate::apis::urlencode(user_id));
+    #[allow(unused_mut)] let mut local_var_req_builder = configuration.client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+    crate::request(configuration, local_var_req_builder, None::<()>).await
 }
 
 /// Returns the current group that the user is currently representing
 pub async fn get_user_represented_group(configuration: &configuration::Configuration, user_id: &str) -> Result<crate::models::RepresentedGroup, Error<GetUserRepresentedGroupError>> {
-    let local_var_configuration = configuration;
-
-    let local_var_client = &local_var_configuration.client;
-
-    let local_var_uri_str = format!("{}/users/{userId}/groups/represented", local_var_configuration.base_path, userId=crate::apis::urlencode(user_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
-    }
-
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
-
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
-
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
-    } else {
-        let local_var_entity: Option<GetUserRepresentedGroupError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
-    }
+    let local_var_uri_str = format!("{}/users/{userId}/groups/represented", configuration.base_path, userId=crate::apis::urlencode(user_id));
+    #[allow(unused_mut)] let mut local_var_req_builder = configuration.client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+    crate::request(configuration, local_var_req_builder, None::<()>).await
 }
 
 /// Search and list any users by text query
 pub async fn search_users(configuration: &configuration::Configuration, search: Option<&str>, developer_type: Option<&str>, n: Option<i32>, offset: Option<i32>) -> Result<Vec<crate::models::LimitedUser>, Error<SearchUsersError>> {
-    let local_var_configuration = configuration;
-
-    let local_var_client = &local_var_configuration.client;
-
-    let local_var_uri_str = format!("{}/users", local_var_configuration.base_path);
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::GET, local_var_uri_str.as_str());
+    let local_var_uri_str = format!("{}/users", configuration.base_path);
+    #[allow(unused_mut)] let mut local_var_req_builder = configuration.client.request(reqwest::Method::GET, local_var_uri_str.as_str());
 
     if let Some(ref local_var_str) = search {
         local_var_req_builder = local_var_req_builder.query(&[("search", &local_var_str.to_string())]);
@@ -232,51 +123,13 @@ pub async fn search_users(configuration: &configuration::Configuration, search: 
     if let Some(ref local_var_str) = offset {
         local_var_req_builder = local_var_req_builder.query(&[("offset", &local_var_str.to_string())]);
     }
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
-    }
-
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
-
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
-
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
-    } else {
-        let local_var_entity: Option<SearchUsersError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
-    }
+    crate::request(configuration, local_var_req_builder, None::<()>).await
 }
 
 /// Update a users information such as the email and birthday.
 pub async fn update_user(configuration: &configuration::Configuration, user_id: &str, update_user_request: Option<crate::models::UpdateUserRequest>) -> Result<crate::models::CurrentUser, Error<UpdateUserError>> {
-    let local_var_configuration = configuration;
-
-    let local_var_client = &local_var_configuration.client;
-
-    let local_var_uri_str = format!("{}/users/{userId}", local_var_configuration.base_path, userId=crate::apis::urlencode(user_id));
-    let mut local_var_req_builder = local_var_client.request(reqwest::Method::PUT, local_var_uri_str.as_str());
-
-    if let Some(ref local_var_user_agent) = local_var_configuration.user_agent {
-        local_var_req_builder = local_var_req_builder.header(reqwest::header::USER_AGENT, local_var_user_agent.clone());
-    }
-    local_var_req_builder = local_var_req_builder.json(&update_user_request);
-
-    let local_var_req = local_var_req_builder.build()?;
-    let local_var_resp = local_var_client.execute(local_var_req).await?;
-
-    let local_var_status = local_var_resp.status();
-    let local_var_content = local_var_resp.text().await?;
-
-    if !local_var_status.is_client_error() && !local_var_status.is_server_error() {
-        serde_json::from_str(&local_var_content).map_err(Error::from)
-    } else {
-        let local_var_entity: Option<UpdateUserError> = serde_json::from_str(&local_var_content).ok();
-        let local_var_error = ResponseContent { status: local_var_status, content: local_var_content, entity: local_var_entity };
-        Err(Error::ResponseError(local_var_error))
-    }
+    let local_var_uri_str = format!("{}/users/{userId}", configuration.base_path, userId=crate::apis::urlencode(user_id));
+    #[allow(unused_mut)] let mut local_var_req_builder = configuration.client.request(reqwest::Method::PUT, local_var_uri_str.as_str());
+    crate::request(configuration, local_var_req_builder, Some(update_user_request)).await
 }
 
