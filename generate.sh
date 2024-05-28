@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Generate Client
 rm src/apis src/models docs -rf
@@ -53,5 +53,12 @@ cat patches/InviteMessageType-Display.rs >> src/models/invite_message_type.rs
 
 
 sed -z -i 's/impl ToString for InviteMessageType {\n[ a-zA-Z_\(\)&-\>{\n:=",]*}\n    }\n}//g' src/models/invite_message_type.rs
+
+cp patches/tags.rs src/models
+echo "pub mod tags;" >> src/models/mod.rs
+sed -i 's/tags: Vec<String>/tags: Vec<crate::models::tags::Tags>/g' src/models/*.rs
+echo "" >> Cargo.toml
+echo "[dependencies.log]" >> Cargo.toml
+echo "version = \"0.4\"" >> Cargo.toml
 
 cargo build
