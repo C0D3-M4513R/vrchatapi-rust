@@ -90,6 +90,11 @@ sed -Ezi "s/\s+let local_var_client = &local_var_configuration.client;\s+/\n    
 sed -i "s/local_var_client/local_var_configuration.client/g" src/apis/*.rs
 sed -i "s/local_var_configuration/configuration/g" src/apis/*.rs
 sed -i "s/let mut local_var_req_builder/#[allow(unused_mut)] let mut local_var_req_builder/g" src/apis/*.rs
+cp patches/tags.rs src/models
 
-
+echo "pub mod tags;" >> src/models/mod.rs
+sed -i 's/tags: Vec<String>/tags: Vec<crate::models::tags::Tags>/g' src/models/*.rs
+echo "" >> Cargo.toml
+echo "[dependencies.log]" >> Cargo.toml
+echo "version = \"0.4\"" >> Cargo.toml
 cargo build
