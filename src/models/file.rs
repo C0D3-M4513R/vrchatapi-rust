@@ -26,7 +26,7 @@ pub struct File {
     pub owner_id: String,
     ///  
     #[serde(rename = "tags")]
-    pub tags: Vec<String>,
+    pub tags: Vec<crate::models::tags::Tags>,
     ///  
     #[serde(rename = "versions")]
     pub versions: Vec<crate::models::FileVersion>,
@@ -34,7 +34,7 @@ pub struct File {
 
 impl File {
     /// 
-    pub fn new(extension: String, id: String, mime_type: crate::models::MimeType, name: String, owner_id: String, tags: Vec<String>, versions: Vec<crate::models::FileVersion>) -> File {
+    pub fn new(extension: String, id: String, mime_type: crate::models::MimeType, name: String, owner_id: String, tags: Vec<crate::models::tags::Tags>, versions: Vec<crate::models::FileVersion>) -> File {
         File {
             extension,
             id,

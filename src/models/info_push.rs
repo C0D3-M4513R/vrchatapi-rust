@@ -22,7 +22,7 @@ pub struct InfoPush {
     pub priority: i32,
     ///  
     #[serde(rename = "tags")]
-    pub tags: Vec<String>,
+    pub tags: Vec<crate::models::tags::Tags>,
     #[serde(rename = "data")]
     pub data: Box<crate::models::InfoPushData>,
     /// Unknown usage, MD5
@@ -41,7 +41,7 @@ pub struct InfoPush {
 
 impl InfoPush {
     /// 
-    pub fn new(id: String, is_enabled: bool, release_status: crate::models::ReleaseStatus, priority: i32, tags: Vec<String>, data: crate::models::InfoPushData, hash: String, created_at: String, updated_at: String) -> InfoPush {
+    pub fn new(id: String, is_enabled: bool, release_status: crate::models::ReleaseStatus, priority: i32, tags: Vec<crate::models::tags::Tags>, data: crate::models::InfoPushData, hash: String, created_at: String, updated_at: String) -> InfoPush {
         InfoPush {
             id,
             is_enabled,

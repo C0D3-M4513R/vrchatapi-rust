@@ -1,11 +1,12 @@
 # \GroupsApi
 
-All URIs are relative to *https://api.vrchat.cloud/api/1*
+All URIs are relative to *https://vrchat.com/api/1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**add_group_gallery_image**](GroupsApi.md#add_group_gallery_image) | **POST** /groups/{groupId}/galleries/{groupGalleryId}/images | Add Group Gallery Image
 [**add_group_member_role**](GroupsApi.md#add_group_member_role) | **PUT** /groups/{groupId}/members/{userId}/roles/{groupRoleId} | Add Role to GroupMember
+[**add_group_post**](GroupsApi.md#add_group_post) | **POST** /groups/{groupId}/posts | Create a post in a Group
 [**ban_group_member**](GroupsApi.md#ban_group_member) | **POST** /groups/{groupId}/bans | Ban Group Member
 [**cancel_group_request**](GroupsApi.md#cancel_group_request) | **DELETE** /groups/{groupId}/requests | Cancel Group Join Request
 [**create_group**](GroupsApi.md#create_group) | **POST** /groups | Create Group
@@ -18,16 +19,19 @@ Method | HTTP request | Description
 [**delete_group_gallery**](GroupsApi.md#delete_group_gallery) | **DELETE** /groups/{groupId}/galleries/{groupGalleryId} | Delete Group Gallery
 [**delete_group_gallery_image**](GroupsApi.md#delete_group_gallery_image) | **DELETE** /groups/{groupId}/galleries/{groupGalleryId}/images/{groupGalleryImageId} | Delete Group Gallery Image
 [**delete_group_invite**](GroupsApi.md#delete_group_invite) | **DELETE** /groups/{groupId}/invites/{userId} | Delete User Invite
+[**delete_group_post**](GroupsApi.md#delete_group_post) | **DELETE** /groups/{groupId}/posts/{notificationId} | Delete a Group post
 [**delete_group_role**](GroupsApi.md#delete_group_role) | **DELETE** /groups/{groupId}/roles/{groupRoleId} | Delete Group Role
 [**get_group**](GroupsApi.md#get_group) | **GET** /groups/{groupId} | Get Group by ID
 [**get_group_announcements**](GroupsApi.md#get_group_announcements) | **GET** /groups/{groupId}/announcement | Get Group Announcement
 [**get_group_audit_logs**](GroupsApi.md#get_group_audit_logs) | **GET** /groups/{groupId}/auditLogs | Get Group Audit Logs
 [**get_group_bans**](GroupsApi.md#get_group_bans) | **GET** /groups/{groupId}/bans | Get Group Bans
 [**get_group_gallery_images**](GroupsApi.md#get_group_gallery_images) | **GET** /groups/{groupId}/galleries/{groupGalleryId} | Get Group Gallery Images
+[**get_group_instances**](GroupsApi.md#get_group_instances) | **GET** /groups/{groupId}/instances | Get Group Instances
 [**get_group_invites**](GroupsApi.md#get_group_invites) | **GET** /groups/{groupId}/invites | Get Group Invites Sent
 [**get_group_member**](GroupsApi.md#get_group_member) | **GET** /groups/{groupId}/members/{userId} | Get Group Member
 [**get_group_members**](GroupsApi.md#get_group_members) | **GET** /groups/{groupId}/members | List Group Members
 [**get_group_permissions**](GroupsApi.md#get_group_permissions) | **GET** /groups/{groupId}/permissions | List Group Permissions
+[**get_group_post**](GroupsApi.md#get_group_post) | **GET** /groups/{groupId}/posts | Get posts from a Group
 [**get_group_requests**](GroupsApi.md#get_group_requests) | **GET** /groups/{groupId}/requests | Get Group Join Requests
 [**get_group_roles**](GroupsApi.md#get_group_roles) | **GET** /groups/{groupId}/roles | Get Group Roles
 [**join_group**](GroupsApi.md#join_group) | **POST** /groups/{groupId}/join | Join Group
@@ -35,10 +39,12 @@ Method | HTTP request | Description
 [**leave_group**](GroupsApi.md#leave_group) | **POST** /groups/{groupId}/leave | Leave Group
 [**remove_group_member_role**](GroupsApi.md#remove_group_member_role) | **DELETE** /groups/{groupId}/members/{userId}/roles/{groupRoleId} | Remove Role from GroupMember
 [**respond_group_join_request**](GroupsApi.md#respond_group_join_request) | **PUT** /groups/{groupId}/requests/{userId} | Respond Group Join request
+[**search_groups**](GroupsApi.md#search_groups) | **GET** /groups | Search Group
 [**unban_group_member**](GroupsApi.md#unban_group_member) | **DELETE** /groups/{groupId}/bans/{userId} | Unban Group Member
 [**update_group**](GroupsApi.md#update_group) | **PUT** /groups/{groupId} | Update Group
 [**update_group_gallery**](GroupsApi.md#update_group_gallery) | **PUT** /groups/{groupId}/galleries/{groupGalleryId} | Update Group Gallery
 [**update_group_member**](GroupsApi.md#update_group_member) | **PUT** /groups/{groupId}/members/{userId} | Update Group Member
+[**update_group_post**](GroupsApi.md#update_group_post) | **PUT** /groups/{groupId}/posts/{notificationId} | Edits a Group post
 [**update_group_role**](GroupsApi.md#update_group_role) | **PUT** /groups/{groupId}/roles/{groupRoleId} | Update Group Role
 
 
@@ -57,7 +63,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **group_id** | **String** | Must be a valid group ID. | [required] |
 **group_gallery_id** | **String** | Must be a valid group gallery ID. | [required] |
-**add_group_gallery_image_request** | Option<[**AddGroupGalleryImageRequest**](AddGroupGalleryImageRequest.md)> |  |  |
+**add_group_gallery_image_request** | [**AddGroupGalleryImageRequest**](AddGroupGalleryImageRequest.md) |  | [required] |
 
 ### Return type
 
@@ -107,6 +113,37 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## add_group_post
+
+> crate::models::GroupPost add_group_post(group_id, create_group_post_request)
+Create a post in a Group
+
+Create a post in a Group.
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**group_id** | **String** | Must be a valid group ID. | [required] |
+**create_group_post_request** | [**CreateGroupPostRequest**](CreateGroupPostRequest.md) |  | [required] |
+
+### Return type
+
+[**crate::models::GroupPost**](GroupPost.md)
+
+### Authorization
+
+[authCookie](../README.md#authCookie)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## ban_group_member
 
 > crate::models::GroupMember ban_group_member(group_id, ban_group_member_request)
@@ -120,7 +157,7 @@ Bans a user from a Group.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **group_id** | **String** | Must be a valid group ID. | [required] |
-**ban_group_member_request** | Option<[**BanGroupMemberRequest**](BanGroupMemberRequest.md)> |  |  |
+**ban_group_member_request** | [**BanGroupMemberRequest**](BanGroupMemberRequest.md) |  | [required] |
 
 ### Return type
 
@@ -180,7 +217,7 @@ Creates a Group and returns a Group object. **Requires VRC+ Subscription.**
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**create_group_request** | Option<[**CreateGroupRequest**](CreateGroupRequest.md)> |  |  |
+**create_group_request** | [**CreateGroupRequest**](CreateGroupRequest.md) |  | [required] |
 
 ### Return type
 
@@ -211,7 +248,7 @@ Creates an Announcement for a Group.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **group_id** | **String** | Must be a valid group ID. | [required] |
-**create_group_announcement_request** | Option<[**CreateGroupAnnouncementRequest**](CreateGroupAnnouncementRequest.md)> |  |  |
+**create_group_announcement_request** | [**CreateGroupAnnouncementRequest**](CreateGroupAnnouncementRequest.md) |  | [required] |
 
 ### Return type
 
@@ -242,7 +279,7 @@ Creates a gallery for a Group.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **group_id** | **String** | Must be a valid group ID. | [required] |
-**create_group_gallery_request** | Option<[**CreateGroupGalleryRequest**](CreateGroupGalleryRequest.md)> |  |  |
+**create_group_gallery_request** | [**CreateGroupGalleryRequest**](CreateGroupGalleryRequest.md) |  | [required] |
 
 ### Return type
 
@@ -273,7 +310,7 @@ Sends an invite to a user to join the group.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **group_id** | **String** | Must be a valid group ID. | [required] |
-**create_group_invite_request** | Option<[**CreateGroupInviteRequest**](CreateGroupInviteRequest.md)> |  |  |
+**create_group_invite_request** | [**CreateGroupInviteRequest**](CreateGroupInviteRequest.md) |  | [required] |
 
 ### Return type
 
@@ -304,7 +341,7 @@ Create a Group role.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **group_id** | **String** | Must be a valid group ID. | [required] |
-**create_group_role_request** | Option<[**CreateGroupRoleRequest**](CreateGroupRoleRequest.md)> |  |  |
+**create_group_role_request** | [**CreateGroupRoleRequest**](CreateGroupRoleRequest.md) |  | [required] |
 
 ### Return type
 
@@ -463,6 +500,37 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+[authCookie](../README.md#authCookie)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## delete_group_post
+
+> crate::models::Success delete_group_post(group_id, notification_id)
+Delete a Group post
+
+Delete a Group post
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**group_id** | **String** | Must be a valid group ID. | [required] |
+**notification_id** | **String** | Must be a valid notification ID. | [required] |
+
+### Return type
+
+[**crate::models::Success**](Success.md)
 
 ### Authorization
 
@@ -668,9 +736,39 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## get_group_instances
+
+> Vec<crate::models::GroupInstance> get_group_instances(group_id)
+Get Group Instances
+
+Returns a list of group instances
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**group_id** | **String** | Must be a valid group ID. | [required] |
+
+### Return type
+
+[**Vec<crate::models::GroupInstance>**](GroupInstance.md)
+
+### Authorization
+
+[authCookie](../README.md#authCookie)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## get_group_invites
 
-> Vec<crate::models::GroupMember> get_group_invites(group_id)
+> Vec<crate::models::GroupMember> get_group_invites(group_id, n, offset)
 Get Group Invites Sent
 
 Returns a list of members that have been invited to the Group.
@@ -681,6 +779,8 @@ Returns a list of members that have been invited to the Group.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **group_id** | **String** | Must be a valid group ID. | [required] |
+**n** | Option<**i32**> | The number of objects to return. |  |[default to 60]
+**offset** | Option<**i32**> | A zero-based offset from the default object sorting from where search results start. |  |
 
 ### Return type
 
@@ -731,7 +831,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_group_members
 
-> Vec<crate::models::GroupMember> get_group_members(group_id, n, offset)
+> Vec<crate::models::GroupMember> get_group_members(group_id, n, offset, sort)
 List Group Members
 
 Returns a List of all **other** Group Members. This endpoint will never return the user calling the endpoint. Information about the user calling the endpoint must be found in the `myMember` field of the Group object.
@@ -744,6 +844,7 @@ Name | Type | Description  | Required | Notes
 **group_id** | **String** | Must be a valid group ID. | [required] |
 **n** | Option<**i32**> | The number of objects to return. |  |[default to 60]
 **offset** | Option<**i32**> | A zero-based offset from the default object sorting from where search results start. |  |
+**sort** | Option<[**GroupSearchSort**](.md)> | The sort order of Group Member results |  |
 
 ### Return type
 
@@ -791,9 +892,42 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## get_group_post
+
+> crate::models::GroupPost get_group_post(group_id, n, offset, public_only)
+Get posts from a Group
+
+Get posts from a Group
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**group_id** | **String** | Must be a valid group ID. | [required] |
+**n** | Option<**i32**> | The number of objects to return. |  |[default to 60]
+**offset** | Option<**i32**> | A zero-based offset from the default object sorting from where search results start. |  |
+**public_only** | Option<**bool**> | See public posts only. |  |
+
+### Return type
+
+[**crate::models::GroupPost**](GroupPost.md)
+
+### Authorization
+
+[authCookie](../README.md#authCookie)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## get_group_requests
 
-> Vec<crate::models::GroupMember> get_group_requests(group_id)
+> Vec<crate::models::GroupMember> get_group_requests(group_id, n, offset, blocked)
 Get Group Join Requests
 
 Returns a list of members that have requested to join the Group.
@@ -804,6 +938,9 @@ Returns a list of members that have requested to join the Group.
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **group_id** | **String** | Must be a valid group ID. | [required] |
+**n** | Option<**i32**> | The number of objects to return. |  |[default to 60]
+**offset** | Option<**i32**> | A zero-based offset from the default object sorting from where search results start. |  |
+**blocked** | Option<**bool**> | See blocked join requests |  |
 
 ### Return type
 
@@ -988,7 +1125,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **group_id** | **String** | Must be a valid group ID. | [required] |
 **user_id** | **String** | Must be a valid user ID. | [required] |
-**respond_group_join_request** | Option<[**RespondGroupJoinRequest**](RespondGroupJoinRequest.md)> |  |  |
+**respond_group_join_request** | [**RespondGroupJoinRequest**](RespondGroupJoinRequest.md) |  | [required] |
 
 ### Return type
 
@@ -1001,6 +1138,38 @@ Name | Type | Description  | Required | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## search_groups
+
+> Vec<crate::models::LimitedGroup> search_groups(query, offset, n)
+Search Group
+
+Searches Groups by name or shortCode
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**query** | Option<**String**> | Query to search for, can be either Group Name or Group shortCode |  |
+**offset** | Option<**i32**> | A zero-based offset from the default object sorting from where search results start. |  |
+**n** | Option<**i32**> | The number of objects to return. |  |[default to 60]
+
+### Return type
+
+[**Vec<crate::models::LimitedGroup>**](LimitedGroup.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1119,6 +1288,38 @@ Name | Type | Description  | Required | Notes
 ### Return type
 
 [**crate::models::GroupLimitedMember**](GroupLimitedMember.md)
+
+### Authorization
+
+[authCookie](../README.md#authCookie)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## update_group_post
+
+> crate::models::GroupPost update_group_post(group_id, notification_id, create_group_post_request)
+Edits a Group post
+
+Edits a Group post
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**group_id** | **String** | Must be a valid group ID. | [required] |
+**notification_id** | **String** | Must be a valid notification ID. | [required] |
+**create_group_post_request** | [**CreateGroupPostRequest**](CreateGroupPostRequest.md) |  | [required] |
+
+### Return type
+
+[**crate::models::GroupPost**](GroupPost.md)
 
 ### Authorization
 

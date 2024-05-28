@@ -10,12 +10,14 @@ Name | Type | Description | Notes
 **account_deletion_log** | Option<[**Vec<crate::models::AccountDeletionLog>**](AccountDeletionLog.md)> |   | [optional]
 **active_friends** | Option<**Vec<String>**> |   | [optional]
 **allow_avatar_copying** | **bool** |  | 
+**badges** | Option<[**Vec<crate::models::Badge>**](Badge.md)> |   | [optional]
 **bio** | **String** |  | 
 **bio_links** | **Vec<String>** |   | 
 **current_avatar** | **String** |  | 
 **current_avatar_asset_url** | **String** |  | 
 **current_avatar_image_url** | **String** | When profilePicOverride is not empty, use it instead. | 
 **current_avatar_thumbnail_image_url** | **String** | When profilePicOverride is not empty, use it instead. | 
+**current_avatar_tags** | **Vec<String>** |  | 
 **date_joined** | [**String**](string.md) |  | 
 **developer_type** | [**crate::models::DeveloperType**](DeveloperType.md) |  | 
 **display_name** | **String** |  | 
@@ -25,6 +27,9 @@ Name | Type | Description | Notes
 **friend_key** | **String** |  | 
 **friends** | **Vec<String>** |  | 
 **has_birthday** | **bool** |  | 
+**hide_content_filter_settings** | Option<**bool**> |  | [optional]
+**user_language** | Option<**String**> |  | [optional]
+**user_language_code** | Option<**String**> |  | [optional]
 **has_email** | **bool** |  | 
 **has_logged_in_from_client** | **bool** |  | 
 **has_pending_email** | **bool** |  | 
@@ -33,15 +38,21 @@ Name | Type | Description | Notes
 **is_friend** | **bool** |  | [default to false]
 **last_activity** | Option<**String**> |  | [optional]
 **last_login** | **String** |  | 
+**last_mobile** | Option<**String**> |  | 
 **last_platform** | **String** | This can be `standalonewindows` or `android`, but can also pretty much be any random Unity verison such as `2019.2.4-801-Release` or `2019.2.2-772-Release` or even `unknownplatform`. | 
 **obfuscated_email** | **String** |  | 
 **obfuscated_pending_email** | **String** |  | 
 **oculus_id** | **String** |  | 
+**google_id** | Option<**String**> |  | [optional]
+**google_details** | Option<[**serde_json::Value**](.md)> |  | [optional]
+**pico_id** | Option<**String**> |  | [optional]
+**vive_id** | Option<**String**> |  | [optional]
 **offline_friends** | Option<**Vec<String>**> |  | [optional]
 **online_friends** | Option<**Vec<String>**> |  | [optional]
 **past_display_names** | [**Vec<crate::models::PastDisplayName>**](PastDisplayName.md) |   | 
 **presence** | Option<[**crate::models::CurrentUserPresence**](CurrentUserPresence.md)> |  | [optional]
 **profile_pic_override** | **String** |  | 
+**pronouns** | **String** |  | 
 **state** | [**crate::models::UserState**](UserState.md) |  | 
 **status** | [**crate::models::UserStatus**](UserStatus.md) |  | 
 **status_description** | **String** |  | 

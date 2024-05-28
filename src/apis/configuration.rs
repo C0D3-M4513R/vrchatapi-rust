@@ -11,10 +11,10 @@ use reqwest;
 
 
 #[derive(Debug, Clone)]
-pub struct Configuration {
+pub struct Configuration<T> {
     pub base_path: String,
     pub user_agent: Option<String>,
-    pub client: reqwest::Client,
+    pub client: T,
     pub basic_auth: Option<BasicAuth>,
     pub oauth_access_token: Option<String>,
     pub bearer_access_token: Option<String>,
@@ -31,18 +31,18 @@ pub struct ApiKey {
 }
 
 
-impl Configuration {
-    pub fn new() -> Configuration {
+impl <T> Configuration<T> {
+    pub fn new() -> Configuration<std::sync::Arc<reqwest::Client>> {
         Configuration::default()
     }
 }
 
-impl Default for Configuration {
+impl Default for Configuration<std::sync::Arc<reqwest::Client>> {
     fn default() -> Self {
         Configuration {
-            base_path: "https://api.vrchat.cloud/api/1".to_owned(),
+            base_path: "https://vrchat.com/api/1".to_owned(),
             user_agent: Some("vrchatapi-rust".to_owned()),
-            client: reqwest::Client::builder().cookie_store(true).build().unwrap(),
+            client: std::sync::Arc::new(reqwest::Client::builder().cookie_store(true).build().unwrap()),
             basic_auth: None,
             oauth_access_token: None,
             bearer_access_token: None,
