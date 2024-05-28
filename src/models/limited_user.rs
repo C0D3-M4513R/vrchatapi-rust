@@ -49,7 +49,7 @@ pub struct LimitedUser {
     pub status_description: String,
     /// <- Always empty.
     #[serde(rename = "tags")]
-    pub tags: Vec<String>,
+    pub tags: Vec<crate::models::tags::Tags>,
     #[serde(rename = "userIcon", skip_serializing_if = "Option::is_none")]
     pub user_icon: Option<String>,
     /// -| **DEPRECATED:** VRChat API no longer return usernames of other users. [See issue by Tupper for more information](https://github.com/pypy-vrc/VRCX/issues/429).
@@ -63,7 +63,7 @@ pub struct LimitedUser {
 
 impl LimitedUser {
     /// 
-    pub fn new(developer_type: crate::models::DeveloperType, display_name: String, id: String, is_friend: bool, last_platform: String, status: crate::models::UserStatus, status_description: String, tags: Vec<String>) -> LimitedUser {
+    pub fn new(developer_type: crate::models::DeveloperType, display_name: String, id: String, is_friend: bool, last_platform: String, status: crate::models::UserStatus, status_description: String, tags: Vec<crate::models::tags::Tags>) -> LimitedUser {
         LimitedUser {
             bio: None,
             bio_links: None,

@@ -52,7 +52,7 @@ pub struct Instance {
     pub short_name: Option<Option<String>>,
     /// The tags array on Instances usually contain the language tags of the people in the instance. 
     #[serde(rename = "tags")]
-    pub tags: Vec<String>,
+    pub tags: Vec<crate::models::tags::Tags>,
     #[serde(rename = "type")]
     pub r#type: crate::models::InstanceType,
     /// WorldID be \"offline\" on User profiles if you are not friends with that user.
@@ -98,7 +98,7 @@ pub struct Instance {
 
 impl Instance {
     /// * `hidden` field is only present if InstanceType is `hidden` aka \"Friends+\", and is instance creator. * `friends` field is only present if InstanceType is `friends` aka \"Friends\", and is instance creator. * `private` field is only present if InstanceType is `private` aka \"Invite\" or \"Invite+\", and is instance creator.
-    pub fn new(active: bool, can_request_invite: bool, capacity: i32, client_number: String, full: bool, id: String, instance_id: String, location: String, n_users: i32, name: String, permanent: bool, photon_region: crate::models::Region, platforms: crate::models::InstancePlatforms, region: crate::models::InstanceRegion, secure_name: String, tags: Vec<String>, r#type: crate::models::InstanceType, world_id: String, queue_enabled: bool, queue_size: i32, recommended_capacity: i32, strict: bool, user_count: i32, world: crate::models::World) -> Instance {
+    pub fn new(active: bool, can_request_invite: bool, capacity: i32, client_number: String, full: bool, id: String, instance_id: String, location: String, n_users: i32, name: String, permanent: bool, photon_region: crate::models::Region, platforms: crate::models::InstancePlatforms, region: crate::models::InstanceRegion, secure_name: String, tags: Vec<crate::models::tags::Tags>, r#type: crate::models::InstanceType, world_id: String, queue_enabled: bool, queue_size: i32, recommended_capacity: i32, strict: bool, user_count: i32, world: crate::models::World) -> Instance {
         Instance {
             active,
             can_request_invite,

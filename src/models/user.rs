@@ -27,7 +27,7 @@ pub struct User {
     #[serde(rename = "currentAvatarThumbnailImageUrl")]
     pub current_avatar_thumbnail_image_url: String,
     #[serde(rename = "currentAvatarTags")]
-    pub current_avatar_tags: Vec<String>,
+    pub current_avatar_tags: Vec<crate::models::tags::Tags>,
     #[serde(rename = "date_joined")]
     pub date_joined: String,
     #[serde(rename = "developerType")]
@@ -74,7 +74,7 @@ pub struct User {
     pub status_description: String,
     ///  
     #[serde(rename = "tags")]
-    pub tags: Vec<String>,
+    pub tags: Vec<crate::models::tags::Tags>,
     #[serde(rename = "travelingToInstance", skip_serializing_if = "Option::is_none")]
     pub traveling_to_instance: Option<String>,
     #[serde(rename = "travelingToLocation", skip_serializing_if = "Option::is_none")]
@@ -92,7 +92,7 @@ pub struct User {
 }
 
 impl User {
-    pub fn new(allow_avatar_copying: bool, bio: String, bio_links: Vec<String>, current_avatar_image_url: String, current_avatar_thumbnail_image_url: String, current_avatar_tags: Vec<String>, date_joined: String, developer_type: crate::models::DeveloperType, display_name: String, friend_key: String, id: String, is_friend: bool, last_activity: String, last_login: String, last_platform: String, profile_pic_override: String, pronouns: String, state: crate::models::UserState, status: crate::models::UserStatus, status_description: String, tags: Vec<String>, user_icon: String) -> User {
+    pub fn new(allow_avatar_copying: bool, bio: String, bio_links: Vec<String>, current_avatar_image_url: String, current_avatar_thumbnail_image_url: String, current_avatar_tags: Vec<crate::models::tags::Tags>, date_joined: String, developer_type: crate::models::DeveloperType, display_name: String, friend_key: String, id: String, is_friend: bool, last_activity: String, last_login: String, last_platform: String, profile_pic_override: String, pronouns: String, state: crate::models::UserState, status: crate::models::UserStatus, status_description: String, tags: Vec<crate::models::tags::Tags>, user_icon: String) -> User {
         User {
             allow_avatar_copying,
             badges: None,

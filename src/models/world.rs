@@ -66,7 +66,7 @@ pub struct World {
     pub release_status: crate::models::ReleaseStatus,
     ///  
     #[serde(rename = "tags")]
-    pub tags: Vec<String>,
+    pub tags: Vec<crate::models::tags::Tags>,
     #[serde(rename = "thumbnailImageUrl")]
     pub thumbnail_image_url: String,
     /// Empty if unauthenticated.
@@ -84,7 +84,7 @@ pub struct World {
 
 impl World {
     /// 
-    pub fn new(author_id: String, author_name: String, capacity: i32, recommended_capacity: i32, created_at: String, description: String, featured: bool, heat: i32, id: String, image_url: String, labs_publication_date: String, name: String, organization: String, popularity: i32, publication_date: String, release_status: crate::models::ReleaseStatus, tags: Vec<String>, thumbnail_image_url: String, updated_at: String, version: i32, visits: i32) -> World {
+    pub fn new(author_id: String, author_name: String, capacity: i32, recommended_capacity: i32, created_at: String, description: String, featured: bool, heat: i32, id: String, image_url: String, labs_publication_date: String, name: String, organization: String, popularity: i32, publication_date: String, release_status: crate::models::ReleaseStatus, tags: Vec<crate::models::tags::Tags>, thumbnail_image_url: String, updated_at: String, version: i32, visits: i32) -> World {
         World {
             author_id,
             author_name,

@@ -18,11 +18,11 @@ pub struct AddFavoriteRequest {
     pub favorite_id: String,
     /// Tags indicate which group this favorite belongs to. Adding multiple groups makes it show up in all. Removing it from one in that case removes it from all.
     #[serde(rename = "tags")]
-    pub tags: Vec<String>,
+    pub tags: Vec<crate::models::tags::Tags>,
 }
 
 impl AddFavoriteRequest {
-    pub fn new(r#type: crate::models::FavoriteType, favorite_id: String, tags: Vec<String>) -> AddFavoriteRequest {
+    pub fn new(r#type: crate::models::FavoriteType, favorite_id: String, tags: Vec<crate::models::tags::Tags>) -> AddFavoriteRequest {
         AddFavoriteRequest {
             r#type,
             favorite_id,

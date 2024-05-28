@@ -25,7 +25,7 @@ pub struct FavoriteGroup {
     pub owner_id: String,
     ///  
     #[serde(rename = "tags")]
-    pub tags: Vec<String>,
+    pub tags: Vec<crate::models::tags::Tags>,
     #[serde(rename = "type")]
     pub r#type: crate::models::FavoriteType,
     #[serde(rename = "visibility")]
@@ -34,7 +34,7 @@ pub struct FavoriteGroup {
 
 impl FavoriteGroup {
     /// 
-    pub fn new(display_name: String, id: String, name: String, owner_display_name: String, owner_id: String, tags: Vec<String>, r#type: crate::models::FavoriteType, visibility: crate::models::FavoriteGroupVisibility) -> FavoriteGroup {
+    pub fn new(display_name: String, id: String, name: String, owner_display_name: String, owner_id: String, tags: Vec<crate::models::tags::Tags>, r#type: crate::models::FavoriteType, visibility: crate::models::FavoriteGroupVisibility) -> FavoriteGroup {
         FavoriteGroup {
             display_name,
             id,

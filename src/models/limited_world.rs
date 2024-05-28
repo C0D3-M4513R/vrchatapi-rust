@@ -52,7 +52,7 @@ pub struct LimitedWorld {
     pub release_status: crate::models::ReleaseStatus,
     ///  
     #[serde(rename = "tags")]
-    pub tags: Vec<String>,
+    pub tags: Vec<crate::models::tags::Tags>,
     #[serde(rename = "thumbnailImageUrl")]
     pub thumbnail_image_url: String,
     ///  
@@ -66,7 +66,7 @@ pub struct LimitedWorld {
 
 impl LimitedWorld {
     /// 
-    pub fn new(author_id: String, author_name: String, capacity: i32, created_at: String, favorites: i32, heat: i32, id: String, image_url: String, labs_publication_date: String, name: String, occupants: i32, organization: String, popularity: i32, publication_date: String, release_status: crate::models::ReleaseStatus, tags: Vec<String>, thumbnail_image_url: String, unity_packages: Vec<crate::models::LimitedUnityPackage>, updated_at: String) -> LimitedWorld {
+    pub fn new(author_id: String, author_name: String, capacity: i32, created_at: String, favorites: i32, heat: i32, id: String, image_url: String, labs_publication_date: String, name: String, occupants: i32, organization: String, popularity: i32, publication_date: String, release_status: crate::models::ReleaseStatus, tags: Vec<crate::models::tags::Tags>, thumbnail_image_url: String, unity_packages: Vec<crate::models::LimitedUnityPackage>, updated_at: String) -> LimitedWorld {
         LimitedWorld {
             author_id,
             author_name,

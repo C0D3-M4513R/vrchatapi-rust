@@ -39,7 +39,7 @@ pub struct Avatar {
     pub release_status: crate::models::ReleaseStatus,
     ///  
     #[serde(rename = "tags")]
-    pub tags: Vec<String>,
+    pub tags: Vec<crate::models::tags::Tags>,
     #[serde(rename = "thumbnailImageUrl")]
     pub thumbnail_image_url: String,
     #[serde(rename = "unityPackageUrl")]
@@ -56,7 +56,7 @@ pub struct Avatar {
 
 impl Avatar {
     /// 
-    pub fn new(author_id: String, author_name: String, created_at: String, description: String, featured: bool, id: String, image_url: String, name: String, release_status: crate::models::ReleaseStatus, tags: Vec<String>, thumbnail_image_url: String, unity_package_url: String, unity_package_url_object: crate::models::AvatarUnityPackageUrlObject, unity_packages: Vec<crate::models::UnityPackage>, updated_at: String, version: i32) -> Avatar {
+    pub fn new(author_id: String, author_name: String, created_at: String, description: String, featured: bool, id: String, image_url: String, name: String, release_status: crate::models::ReleaseStatus, tags: Vec<crate::models::tags::Tags>, thumbnail_image_url: String, unity_package_url: String, unity_package_url_object: crate::models::AvatarUnityPackageUrlObject, unity_packages: Vec<crate::models::UnityPackage>, updated_at: String, version: i32) -> Avatar {
         Avatar {
             asset_url: None,
             asset_url_object: None,

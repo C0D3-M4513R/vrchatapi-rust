@@ -19,14 +19,14 @@ pub struct Favorite {
     pub id: String,
     ///  
     #[serde(rename = "tags")]
-    pub tags: Vec<String>,
+    pub tags: Vec<crate::models::tags::Tags>,
     #[serde(rename = "type")]
     pub r#type: crate::models::FavoriteType,
 }
 
 impl Favorite {
     /// 
-    pub fn new(favorite_id: String, id: String, tags: Vec<String>, r#type: crate::models::FavoriteType) -> Favorite {
+    pub fn new(favorite_id: String, id: String, tags: Vec<crate::models::tags::Tags>, r#type: crate::models::FavoriteType) -> Favorite {
         Favorite {
             favorite_id,
             id,
