@@ -9,31 +9,31 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct DynamicContentRow {
     #[serde(rename = "index", skip_serializing_if = "Option::is_none")]
     pub index: Option<i32>,
     #[serde(rename = "name")]
-    pub name: String,
+    pub name: std::sync::Arc<str>,
     /// Usually \"ThisPlatformSupported\", but can also be other values such as \"all\" or platform specific identifiers.
     #[serde(rename = "platform")]
-    pub platform: String,
+    pub platform: std::sync::Arc<str>,
     #[serde(rename = "sortHeading")]
-    pub sort_heading: String,
+    pub sort_heading: std::sync::Arc<str>,
     #[serde(rename = "sortOrder")]
-    pub sort_order: String,
+    pub sort_order: std::sync::Arc<str>,
     #[serde(rename = "sortOwnership")]
-    pub sort_ownership: String,
+    pub sort_ownership: std::sync::Arc<str>,
     /// Tag to filter content for this row.
     #[serde(rename = "tag", skip_serializing_if = "Option::is_none")]
-    pub tag: Option<String>,
+    pub tag: Option<std::sync::Arc<str>>,
     /// Type is not present if it is a world.
     #[serde(rename = "type", skip_serializing_if = "Option::is_none")]
-    pub r#type: Option<String>,
+    pub r#type: Option<std::sync::Arc<str>>,
 }
 
 impl DynamicContentRow {
-    pub fn new(name: String, platform: String, sort_heading: String, sort_order: String, sort_ownership: String) -> DynamicContentRow {
+    pub fn new(name: std::sync::Arc<str>, platform: std::sync::Arc<str>, sort_heading: std::sync::Arc<str>, sort_order: std::sync::Arc<str>, sort_ownership: std::sync::Arc<str>) -> DynamicContentRow {
         DynamicContentRow {
             index: None,
             name,

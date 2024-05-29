@@ -10,17 +10,17 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct GroupPermission {
     /// The name of the permission.
     #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<std::sync::Arc<str>>,
     /// The display name of the permission.
     #[serde(rename = "displayName", skip_serializing_if = "Option::is_none")]
-    pub display_name: Option<String>,
+    pub display_name: Option<std::sync::Arc<str>>,
     /// Human-readable description of the permission.
     #[serde(rename = "help", skip_serializing_if = "Option::is_none")]
-    pub help: Option<String>,
+    pub help: Option<std::sync::Arc<str>>,
     /// Whether this permission is a \"management\" permission.
     #[serde(rename = "isManagementPermission", skip_serializing_if = "Option::is_none")]
     pub is_management_permission: Option<bool>,

@@ -9,28 +9,28 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct CreateInstanceRequest {
     /// WorldID be \"offline\" on User profiles if you are not friends with that user.
     #[serde(rename = "worldId")]
-    pub world_id: String,
+    pub world_id: std::sync::Arc<str>,
     #[serde(rename = "type")]
     pub r#type: crate::models::InstanceType,
     #[serde(rename = "region")]
     pub region: crate::models::InstanceRegion,
     /// A groupId if the instance type is \"group\", null if instance type is public, or a userId otherwise
     #[serde(rename = "ownerId", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub owner_id: Option<Option<String>>,
+    pub owner_id: Option<Option<std::sync::Arc<str>>>,
     /// Group roleIds that are allowed to join if the type is \"group\" and groupAccessType is \"member\"
     #[serde(rename = "roleIds", skip_serializing_if = "Option::is_none")]
-    pub role_ids: Option<Vec<String>>,
+    pub role_ids: Option<Vec<std::sync::Arc<str>>>,
     #[serde(rename = "groupAccessType", skip_serializing_if = "Option::is_none")]
     pub group_access_type: Option<crate::models::GroupAccessType>,
     #[serde(rename = "queueEnabled", skip_serializing_if = "Option::is_none")]
     pub queue_enabled: Option<bool>,
     /// The time after which users won't be allowed to join the instance. This doesn't work for public instances.
     #[serde(rename = "closedAt", skip_serializing_if = "Option::is_none")]
-    pub closed_at: Option<String>,
+    pub closed_at: Option<std::sync::Arc<str>>,
     /// Only applies to invite type instances to make them invite+
     #[serde(rename = "canRequestInvite", skip_serializing_if = "Option::is_none")]
     pub can_request_invite: Option<bool>,
@@ -42,7 +42,7 @@ pub struct CreateInstanceRequest {
 }
 
 impl CreateInstanceRequest {
-    pub fn new(world_id: String, r#type: crate::models::InstanceType, region: crate::models::InstanceRegion) -> CreateInstanceRequest {
+    pub fn new(world_id: std::sync::Arc<str>, r#type: crate::models::InstanceType, region: crate::models::InstanceRegion) -> CreateInstanceRequest {
         CreateInstanceRequest {
             world_id,
             r#type,

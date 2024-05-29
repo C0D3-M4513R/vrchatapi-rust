@@ -9,18 +9,18 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ApiHealth {
     #[serde(rename = "ok")]
     pub ok: bool,
     #[serde(rename = "serverName")]
-    pub server_name: String,
+    pub server_name: std::sync::Arc<str>,
     #[serde(rename = "buildVersionTag")]
-    pub build_version_tag: String,
+    pub build_version_tag: std::sync::Arc<str>,
 }
 
 impl ApiHealth {
-    pub fn new(ok: bool, server_name: String, build_version_tag: String) -> ApiHealth {
+    pub fn new(ok: bool, server_name: std::sync::Arc<str>, build_version_tag: std::sync::Arc<str>) -> ApiHealth {
         ApiHealth {
             ok,
             server_name,

@@ -9,35 +9,35 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct GroupPost {
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+    pub id: Option<std::sync::Arc<str>>,
     #[serde(rename = "groupId", skip_serializing_if = "Option::is_none")]
-    pub group_id: Option<String>,
+    pub group_id: Option<std::sync::Arc<str>>,
     /// A users unique ID, usually in the form of `usr_c1644b5b-3ca4-45b4-97c6-a2a0de70d469`. Legacy players can have old IDs in the form of `8JoV9XEdpo`. The ID can never be changed.
     #[serde(rename = "authorId", skip_serializing_if = "Option::is_none")]
-    pub author_id: Option<String>,
+    pub author_id: Option<std::sync::Arc<str>>,
     /// A users unique ID, usually in the form of `usr_c1644b5b-3ca4-45b4-97c6-a2a0de70d469`. Legacy players can have old IDs in the form of `8JoV9XEdpo`. The ID can never be changed.
     #[serde(rename = "editorId", skip_serializing_if = "Option::is_none")]
-    pub editor_id: Option<String>,
+    pub editor_id: Option<std::sync::Arc<str>>,
     #[serde(rename = "visibility", skip_serializing_if = "Option::is_none")]
     pub visibility: Option<crate::models::GroupPostVisibility>,
     ///  
     #[serde(rename = "roleId", skip_serializing_if = "Option::is_none")]
-    pub role_id: Option<Vec<String>>,
+    pub role_id: Option<Vec<std::sync::Arc<str>>>,
     #[serde(rename = "title", skip_serializing_if = "Option::is_none")]
-    pub title: Option<String>,
+    pub title: Option<std::sync::Arc<str>>,
     #[serde(rename = "text", skip_serializing_if = "Option::is_none")]
-    pub text: Option<String>,
+    pub text: Option<std::sync::Arc<str>>,
     #[serde(rename = "imageId", skip_serializing_if = "Option::is_none")]
-    pub image_id: Option<String>,
+    pub image_id: Option<std::sync::Arc<str>>,
     #[serde(rename = "imageUrl", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub image_url: Option<Option<String>>,
+    pub image_url: Option<Option<std::sync::Arc<str>>>,
     #[serde(rename = "createdAt", skip_serializing_if = "Option::is_none")]
-    pub created_at: Option<String>,
+    pub created_at: Option<std::sync::Arc<str>>,
     #[serde(rename = "updatedAt", skip_serializing_if = "Option::is_none")]
-    pub updated_at: Option<String>,
+    pub updated_at: Option<std::sync::Arc<str>>,
 }
 
 impl GroupPost {

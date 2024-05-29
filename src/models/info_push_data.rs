@@ -10,22 +10,22 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct InfoPushData {
     #[serde(rename = "contentList", skip_serializing_if = "Option::is_none")]
     pub content_list: Option<Box<crate::models::DynamicContentRow>>,
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<std::sync::Arc<str>>,
     #[serde(rename = "imageUrl", skip_serializing_if = "Option::is_none")]
-    pub image_url: Option<String>,
+    pub image_url: Option<std::sync::Arc<str>>,
     #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<std::sync::Arc<str>>,
     #[serde(rename = "onPressed", skip_serializing_if = "Option::is_none")]
     pub on_pressed: Option<Box<crate::models::InfoPushDataClickable>>,
     #[serde(rename = "template", skip_serializing_if = "Option::is_none")]
-    pub template: Option<String>,
+    pub template: Option<std::sync::Arc<str>>,
     #[serde(rename = "version", skip_serializing_if = "Option::is_none")]
-    pub version: Option<String>,
+    pub version: Option<std::sync::Arc<str>>,
     #[serde(rename = "article", skip_serializing_if = "Option::is_none")]
     pub article: Option<Box<crate::models::InfoPushDataArticle>>,
 }

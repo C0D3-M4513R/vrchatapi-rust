@@ -10,28 +10,28 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ApiConfigDownloadUrlList {
     /// Download link for legacy SDK2
     #[serde(rename = "sdk2")]
-    pub sdk2: String,
+    pub sdk2: std::sync::Arc<str>,
     /// Download link for SDK3 for Avatars
     #[serde(rename = "sdk3-avatars")]
-    pub sdk3_avatars: String,
+    pub sdk3_avatars: std::sync::Arc<str>,
     /// Download link for SDK3 for Worlds
     #[serde(rename = "sdk3-worlds")]
-    pub sdk3_worlds: String,
+    pub sdk3_worlds: std::sync::Arc<str>,
     /// Download link for the Creator Companion
     #[serde(rename = "vcc")]
-    pub vcc: String,
+    pub vcc: std::sync::Arc<str>,
     /// Download link for ???
     #[serde(rename = "bootstrap")]
-    pub bootstrap: String,
+    pub bootstrap: std::sync::Arc<str>,
 }
 
 impl ApiConfigDownloadUrlList {
     /// Download links for various development assets.
-    pub fn new(sdk2: String, sdk3_avatars: String, sdk3_worlds: String, vcc: String, bootstrap: String) -> ApiConfigDownloadUrlList {
+    pub fn new(sdk2: std::sync::Arc<str>, sdk3_avatars: std::sync::Arc<str>, sdk3_worlds: std::sync::Arc<str>, vcc: std::sync::Arc<str>, bootstrap: std::sync::Arc<str>) -> ApiConfigDownloadUrlList {
         ApiConfigDownloadUrlList {
             sdk2,
             sdk3_avatars,

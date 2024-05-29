@@ -9,13 +9,13 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct InfoPushDataClickable {
     #[serde(rename = "command")]
     pub command: Command,
     /// In case of OpenURL, this would contain the link.
     #[serde(rename = "parameters", skip_serializing_if = "Option::is_none")]
-    pub parameters: Option<Vec<String>>,
+    pub parameters: Option<Vec<std::sync::Arc<str>>>,
 }
 
 impl InfoPushDataClickable {

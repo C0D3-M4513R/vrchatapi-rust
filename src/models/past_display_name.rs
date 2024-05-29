@@ -9,16 +9,16 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct PastDisplayName {
     #[serde(rename = "displayName")]
-    pub display_name: String,
+    pub display_name: std::sync::Arc<str>,
     #[serde(rename = "updated_at")]
-    pub updated_at: String,
+    pub updated_at: std::sync::Arc<str>,
 }
 
 impl PastDisplayName {
-    pub fn new(display_name: String, updated_at: String) -> PastDisplayName {
+    pub fn new(display_name: std::sync::Arc<str>, updated_at: std::sync::Arc<str>) -> PastDisplayName {
         PastDisplayName {
             display_name,
             updated_at,

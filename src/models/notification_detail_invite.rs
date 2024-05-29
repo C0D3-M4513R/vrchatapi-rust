@@ -9,19 +9,19 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct NotificationDetailInvite {
     #[serde(rename = "inviteMessage", skip_serializing_if = "Option::is_none")]
-    pub invite_message: Option<String>,
+    pub invite_message: Option<std::sync::Arc<str>>,
     /// WorldID be \"offline\" on User profiles if you are not friends with that user.
     #[serde(rename = "worldId")]
-    pub world_id: String,
+    pub world_id: std::sync::Arc<str>,
     #[serde(rename = "worldName")]
-    pub world_name: String,
+    pub world_name: std::sync::Arc<str>,
 }
 
 impl NotificationDetailInvite {
-    pub fn new(world_id: String, world_name: String) -> NotificationDetailInvite {
+    pub fn new(world_id: std::sync::Arc<str>, world_name: std::sync::Arc<str>) -> NotificationDetailInvite {
         NotificationDetailInvite {
             invite_message: None,
             world_id,

@@ -9,35 +9,35 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct GroupGallery {
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+    pub id: Option<std::sync::Arc<str>>,
     /// Name of the gallery.
     #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<std::sync::Arc<str>>,
     /// Description of the gallery.
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<std::sync::Arc<str>>,
     /// Whether the gallery is members only.
     #[serde(rename = "membersOnly", skip_serializing_if = "Option::is_none")]
     pub members_only: Option<bool>,
     ///  
     #[serde(rename = "roleIdsToView", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub role_ids_to_view: Option<Option<Vec<String>>>,
+    pub role_ids_to_view: Option<Option<Vec<std::sync::Arc<str>>>>,
     ///  
     #[serde(rename = "roleIdsToSubmit", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub role_ids_to_submit: Option<Option<Vec<String>>>,
+    pub role_ids_to_submit: Option<Option<Vec<std::sync::Arc<str>>>>,
     ///  
     #[serde(rename = "roleIdsToAutoApprove", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub role_ids_to_auto_approve: Option<Option<Vec<String>>>,
+    pub role_ids_to_auto_approve: Option<Option<Vec<std::sync::Arc<str>>>>,
     ///  
     #[serde(rename = "roleIdsToManage", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub role_ids_to_manage: Option<Option<Vec<String>>>,
+    pub role_ids_to_manage: Option<Option<Vec<std::sync::Arc<str>>>>,
     #[serde(rename = "createdAt", skip_serializing_if = "Option::is_none")]
-    pub created_at: Option<String>,
+    pub created_at: Option<std::sync::Arc<str>>,
     #[serde(rename = "updatedAt", skip_serializing_if = "Option::is_none")]
-    pub updated_at: Option<String>,
+    pub updated_at: Option<std::sync::Arc<str>>,
 }
 
 impl GroupGallery {

@@ -10,14 +10,14 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct InviteMessage {
     #[serde(rename = "canBeUpdated")]
     pub can_be_updated: bool,
     #[serde(rename = "id")]
-    pub id: String,
+    pub id: std::sync::Arc<str>,
     #[serde(rename = "message")]
-    pub message: String,
+    pub message: std::sync::Arc<str>,
     #[serde(rename = "messageType")]
     pub message_type: crate::models::InviteMessageType,
     /// Changes to 60 when updated, although probably server-side configurable.
@@ -26,12 +26,12 @@ pub struct InviteMessage {
     #[serde(rename = "slot")]
     pub slot: i32,
     #[serde(rename = "updatedAt")]
-    pub updated_at: String,
+    pub updated_at: std::sync::Arc<str>,
 }
 
 impl InviteMessage {
     /// 
-    pub fn new(can_be_updated: bool, id: String, message: String, message_type: crate::models::InviteMessageType, remaining_cooldown_minutes: i32, slot: i32, updated_at: String) -> InviteMessage {
+    pub fn new(can_be_updated: bool, id: std::sync::Arc<str>, message: std::sync::Arc<str>, message_type: crate::models::InviteMessageType, remaining_cooldown_minutes: i32, slot: i32, updated_at: std::sync::Arc<str>) -> InviteMessage {
         InviteMessage {
             can_be_updated,
             id,

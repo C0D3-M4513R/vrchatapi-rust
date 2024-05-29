@@ -10,15 +10,15 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Transaction {
     #[serde(rename = "id")]
-    pub id: String,
+    pub id: std::sync::Arc<str>,
     /// A users unique ID, usually in the form of `usr_c1644b5b-3ca4-45b4-97c6-a2a0de70d469`. Legacy players can have old IDs in the form of `8JoV9XEdpo`. The ID can never be changed.
     #[serde(rename = "userId", skip_serializing_if = "Option::is_none")]
-    pub user_id: Option<String>,
+    pub user_id: Option<std::sync::Arc<str>>,
     #[serde(rename = "userDisplayName", skip_serializing_if = "Option::is_none")]
-    pub user_display_name: Option<String>,
+    pub user_display_name: Option<std::sync::Arc<str>>,
     #[serde(rename = "status")]
     pub status: crate::models::TransactionStatus,
     #[serde(rename = "subscription")]
@@ -26,15 +26,15 @@ pub struct Transaction {
     #[serde(rename = "sandbox")]
     pub sandbox: bool,
     #[serde(rename = "created_at")]
-    pub created_at: String,
+    pub created_at: std::sync::Arc<str>,
     #[serde(rename = "updated_at")]
-    pub updated_at: String,
+    pub updated_at: std::sync::Arc<str>,
     #[serde(rename = "steam", skip_serializing_if = "Option::is_none")]
     pub steam: Option<Box<crate::models::TransactionSteamInfo>>,
     #[serde(rename = "agreement", skip_serializing_if = "Option::is_none")]
     pub agreement: Option<Box<crate::models::TransactionAgreement>>,
     #[serde(rename = "error")]
-    pub error: String,
+    pub error: std::sync::Arc<str>,
     #[serde(rename = "isGift", skip_serializing_if = "Option::is_none")]
     pub is_gift: Option<bool>,
     #[serde(rename = "isTokens", skip_serializing_if = "Option::is_none")]
@@ -43,7 +43,7 @@ pub struct Transaction {
 
 impl Transaction {
     /// 
-    pub fn new(id: String, status: crate::models::TransactionStatus, subscription: crate::models::Subscription, sandbox: bool, created_at: String, updated_at: String, error: String) -> Transaction {
+    pub fn new(id: std::sync::Arc<str>, status: crate::models::TransactionStatus, subscription: crate::models::Subscription, sandbox: bool, created_at: std::sync::Arc<str>, updated_at: std::sync::Arc<str>, error: std::sync::Arc<str>) -> Transaction {
         Transaction {
             id,
             user_id: None,

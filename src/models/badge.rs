@@ -9,20 +9,20 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Badge {
     /// only present in CurrentUser badges
     #[serde(rename = "assignedAt", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub assigned_at: Option<Option<String>>,
+    pub assigned_at: Option<Option<std::sync::Arc<str>>>,
     #[serde(rename = "badgeDescription")]
-    pub badge_description: String,
+    pub badge_description: std::sync::Arc<str>,
     #[serde(rename = "badgeId")]
-    pub badge_id: String,
+    pub badge_id: std::sync::Arc<str>,
     /// direct url to image
     #[serde(rename = "badgeImageUrl")]
-    pub badge_image_url: String,
+    pub badge_image_url: std::sync::Arc<str>,
     #[serde(rename = "badgeName")]
-    pub badge_name: String,
+    pub badge_name: std::sync::Arc<str>,
     /// only present in CurrentUser badges
     #[serde(rename = "hidden", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub hidden: Option<Option<bool>>,
@@ -30,11 +30,11 @@ pub struct Badge {
     pub showcased: bool,
     /// only present in CurrentUser badges
     #[serde(rename = "updatedAt", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub updated_at: Option<Option<String>>,
+    pub updated_at: Option<Option<std::sync::Arc<str>>>,
 }
 
 impl Badge {
-    pub fn new(badge_description: String, badge_id: String, badge_image_url: String, badge_name: String, showcased: bool) -> Badge {
+    pub fn new(badge_description: std::sync::Arc<str>, badge_id: std::sync::Arc<str>, badge_image_url: std::sync::Arc<str>, badge_name: std::sync::Arc<str>, showcased: bool) -> Badge {
         Badge {
             assigned_at: None,
             badge_description,

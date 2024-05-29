@@ -9,18 +9,18 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct CreateGroupRoleRequest {
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+    pub id: Option<std::sync::Arc<str>>,
     #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<std::sync::Arc<str>>,
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<std::sync::Arc<str>>,
     #[serde(rename = "isSelfAssignable", skip_serializing_if = "Option::is_none")]
     pub is_self_assignable: Option<bool>,
     #[serde(rename = "permissions", skip_serializing_if = "Option::is_none")]
-    pub permissions: Option<Vec<String>>,
+    pub permissions: Option<Vec<std::sync::Arc<str>>>,
 }
 
 impl CreateGroupRoleRequest {

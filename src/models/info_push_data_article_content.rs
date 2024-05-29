@@ -9,12 +9,12 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct InfoPushDataArticleContent {
     #[serde(rename = "text", skip_serializing_if = "Option::is_none")]
-    pub text: Option<String>,
+    pub text: Option<std::sync::Arc<str>>,
     #[serde(rename = "imageUrl", skip_serializing_if = "Option::is_none")]
-    pub image_url: Option<String>,
+    pub image_url: Option<std::sync::Arc<str>>,
     #[serde(rename = "onPressed", skip_serializing_if = "Option::is_none")]
     pub on_pressed: Option<Box<crate::models::InfoPushDataClickable>>,
 }

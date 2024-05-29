@@ -9,28 +9,28 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct PlayerModeration {
     #[serde(rename = "created")]
-    pub created: String,
+    pub created: std::sync::Arc<str>,
     #[serde(rename = "id")]
-    pub id: String,
+    pub id: std::sync::Arc<str>,
     #[serde(rename = "sourceDisplayName")]
-    pub source_display_name: String,
+    pub source_display_name: std::sync::Arc<str>,
     /// A users unique ID, usually in the form of `usr_c1644b5b-3ca4-45b4-97c6-a2a0de70d469`. Legacy players can have old IDs in the form of `8JoV9XEdpo`. The ID can never be changed.
     #[serde(rename = "sourceUserId")]
-    pub source_user_id: String,
+    pub source_user_id: std::sync::Arc<str>,
     #[serde(rename = "targetDisplayName")]
-    pub target_display_name: String,
+    pub target_display_name: std::sync::Arc<str>,
     /// A users unique ID, usually in the form of `usr_c1644b5b-3ca4-45b4-97c6-a2a0de70d469`. Legacy players can have old IDs in the form of `8JoV9XEdpo`. The ID can never be changed.
     #[serde(rename = "targetUserId")]
-    pub target_user_id: String,
+    pub target_user_id: std::sync::Arc<str>,
     #[serde(rename = "type")]
     pub r#type: crate::models::PlayerModerationType,
 }
 
 impl PlayerModeration {
-    pub fn new(created: String, id: String, source_display_name: String, source_user_id: String, target_display_name: String, target_user_id: String, r#type: crate::models::PlayerModerationType) -> PlayerModeration {
+    pub fn new(created: std::sync::Arc<str>, id: std::sync::Arc<str>, source_display_name: std::sync::Arc<str>, source_user_id: std::sync::Arc<str>, target_display_name: std::sync::Arc<str>, target_user_id: std::sync::Arc<str>, r#type: crate::models::PlayerModerationType) -> PlayerModeration {
         PlayerModeration {
             created,
             id,

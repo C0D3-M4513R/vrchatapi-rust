@@ -9,17 +9,17 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct InviteRequest {
     /// InstanceID can be \"offline\" on User profiles if you are not friends with that user and \"private\" if you are friends and user is in private instance.
     #[serde(rename = "instanceId")]
-    pub instance_id: String,
+    pub instance_id: std::sync::Arc<str>,
     #[serde(rename = "messageSlot", skip_serializing_if = "Option::is_none")]
     pub message_slot: Option<i32>,
 }
 
 impl InviteRequest {
-    pub fn new(instance_id: String) -> InviteRequest {
+    pub fn new(instance_id: std::sync::Arc<str>) -> InviteRequest {
         InviteRequest {
             instance_id,
             message_slot: None,

@@ -9,44 +9,44 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct CreateWorldRequest {
     #[serde(rename = "assetUrl")]
-    pub asset_url: String,
+    pub asset_url: std::sync::Arc<str>,
     #[serde(rename = "assetVersion", skip_serializing_if = "Option::is_none")]
     pub asset_version: Option<i32>,
     /// A users unique ID, usually in the form of `usr_c1644b5b-3ca4-45b4-97c6-a2a0de70d469`. Legacy players can have old IDs in the form of `8JoV9XEdpo`. The ID can never be changed.
     #[serde(rename = "authorId", skip_serializing_if = "Option::is_none")]
-    pub author_id: Option<String>,
+    pub author_id: Option<std::sync::Arc<str>>,
     #[serde(rename = "authorName", skip_serializing_if = "Option::is_none")]
-    pub author_name: Option<String>,
+    pub author_name: Option<std::sync::Arc<str>>,
     #[serde(rename = "capacity", skip_serializing_if = "Option::is_none")]
     pub capacity: Option<i32>,
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<std::sync::Arc<str>>,
     /// WorldID be \"offline\" on User profiles if you are not friends with that user.
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+    pub id: Option<std::sync::Arc<str>>,
     #[serde(rename = "imageUrl")]
-    pub image_url: String,
+    pub image_url: std::sync::Arc<str>,
     #[serde(rename = "name")]
-    pub name: String,
+    pub name: std::sync::Arc<str>,
     /// This can be `standalonewindows` or `android`, but can also pretty much be any random Unity verison such as `2019.2.4-801-Release` or `2019.2.2-772-Release` or even `unknownplatform`.
     #[serde(rename = "platform", skip_serializing_if = "Option::is_none")]
-    pub platform: Option<String>,
+    pub platform: Option<std::sync::Arc<str>>,
     #[serde(rename = "releaseStatus", skip_serializing_if = "Option::is_none")]
     pub release_status: Option<crate::models::ReleaseStatus>,
     ///  
     #[serde(rename = "tags", skip_serializing_if = "Option::is_none")]
-    pub tags: Option<Vec<String>>,
+    pub tags: Option<Vec<std::sync::Arc<str>>>,
     #[serde(rename = "unityPackageUrl", skip_serializing_if = "Option::is_none")]
-    pub unity_package_url: Option<String>,
+    pub unity_package_url: Option<std::sync::Arc<str>>,
     #[serde(rename = "unityVersion", skip_serializing_if = "Option::is_none")]
-    pub unity_version: Option<String>,
+    pub unity_version: Option<std::sync::Arc<str>>,
 }
 
 impl CreateWorldRequest {
-    pub fn new(asset_url: String, image_url: String, name: String) -> CreateWorldRequest {
+    pub fn new(asset_url: std::sync::Arc<str>, image_url: std::sync::Arc<str>, name: std::sync::Arc<str>) -> CreateWorldRequest {
         CreateWorldRequest {
             asset_url,
             asset_version: None,

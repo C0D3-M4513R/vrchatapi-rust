@@ -10,60 +10,60 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct LimitedUser {
     #[serde(rename = "bio", skip_serializing_if = "Option::is_none")]
-    pub bio: Option<String>,
+    pub bio: Option<std::sync::Arc<str>>,
     ///  
     #[serde(rename = "bioLinks", skip_serializing_if = "Option::is_none")]
-    pub bio_links: Option<Vec<String>>,
+    pub bio_links: Option<Vec<std::sync::Arc<str>>>,
     /// When profilePicOverride is not empty, use it instead.
     #[serde(rename = "currentAvatarImageUrl", skip_serializing_if = "Option::is_none")]
-    pub current_avatar_image_url: Option<String>,
+    pub current_avatar_image_url: Option<std::sync::Arc<str>>,
     /// When profilePicOverride is not empty, use it instead.
     #[serde(rename = "currentAvatarThumbnailImageUrl", skip_serializing_if = "Option::is_none")]
-    pub current_avatar_thumbnail_image_url: Option<String>,
+    pub current_avatar_thumbnail_image_url: Option<std::sync::Arc<str>>,
     #[serde(rename = "currentAvatarTags", skip_serializing_if = "Option::is_none")]
-    pub current_avatar_tags: Option<Vec<String>>,
+    pub current_avatar_tags: Option<Vec<std::sync::Arc<str>>>,
     #[serde(rename = "developerType")]
     pub developer_type: crate::models::DeveloperType,
     #[serde(rename = "displayName")]
-    pub display_name: String,
+    pub display_name: std::sync::Arc<str>,
     #[serde(rename = "fallbackAvatar", skip_serializing_if = "Option::is_none")]
-    pub fallback_avatar: Option<String>,
+    pub fallback_avatar: Option<std::sync::Arc<str>>,
     /// A users unique ID, usually in the form of `usr_c1644b5b-3ca4-45b4-97c6-a2a0de70d469`. Legacy players can have old IDs in the form of `8JoV9XEdpo`. The ID can never be changed.
     #[serde(rename = "id")]
-    pub id: String,
+    pub id: std::sync::Arc<str>,
     #[serde(rename = "isFriend")]
     pub is_friend: bool,
     /// This can be `standalonewindows` or `android`, but can also pretty much be any random Unity verison such as `2019.2.4-801-Release` or `2019.2.2-772-Release` or even `unknownplatform`.
     #[serde(rename = "last_platform")]
-    pub last_platform: String,
+    pub last_platform: std::sync::Arc<str>,
     #[serde(rename = "profilePicOverride", skip_serializing_if = "Option::is_none")]
-    pub profile_pic_override: Option<String>,
+    pub profile_pic_override: Option<std::sync::Arc<str>>,
     #[serde(rename = "pronouns", skip_serializing_if = "Option::is_none")]
-    pub pronouns: Option<String>,
+    pub pronouns: Option<std::sync::Arc<str>>,
     #[serde(rename = "status")]
     pub status: crate::models::UserStatus,
     #[serde(rename = "statusDescription")]
-    pub status_description: String,
+    pub status_description: std::sync::Arc<str>,
     /// <- Always empty.
     #[serde(rename = "tags")]
     pub tags: Vec<crate::models::tags::Tags>,
     #[serde(rename = "userIcon", skip_serializing_if = "Option::is_none")]
-    pub user_icon: Option<String>,
+    pub user_icon: Option<std::sync::Arc<str>>,
     /// -| **DEPRECATED:** VRChat API no longer return usernames of other users. [See issue by Tupper for more information](https://github.com/pypy-vrc/VRCX/issues/429).
     #[serde(rename = "username", skip_serializing_if = "Option::is_none")]
-    pub username: Option<String>,
+    pub username: Option<std::sync::Arc<str>>,
     #[serde(rename = "location", skip_serializing_if = "Option::is_none")]
-    pub location: Option<String>,
+    pub location: Option<std::sync::Arc<str>>,
     #[serde(rename = "friendKey", skip_serializing_if = "Option::is_none")]
-    pub friend_key: Option<String>,
+    pub friend_key: Option<std::sync::Arc<str>>,
 }
 
 impl LimitedUser {
     /// 
-    pub fn new(developer_type: crate::models::DeveloperType, display_name: String, id: String, is_friend: bool, last_platform: String, status: crate::models::UserStatus, status_description: String, tags: Vec<crate::models::tags::Tags>) -> LimitedUser {
+    pub fn new(developer_type: crate::models::DeveloperType, display_name: std::sync::Arc<str>, id: std::sync::Arc<str>, is_friend: bool, last_platform: std::sync::Arc<str>, status: crate::models::UserStatus, status_description: std::sync::Arc<str>, tags: Vec<crate::models::tags::Tags>) -> LimitedUser {
         LimitedUser {
             bio: None,
             bio_links: None,

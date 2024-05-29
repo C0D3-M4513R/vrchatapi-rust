@@ -9,38 +9,38 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct LimitedGroup {
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+    pub id: Option<std::sync::Arc<str>>,
     #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<std::sync::Arc<str>>,
     #[serde(rename = "shortCode", skip_serializing_if = "Option::is_none")]
-    pub short_code: Option<String>,
+    pub short_code: Option<std::sync::Arc<str>>,
     #[serde(rename = "discriminator", skip_serializing_if = "Option::is_none")]
-    pub discriminator: Option<String>,
+    pub discriminator: Option<std::sync::Arc<str>>,
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<std::sync::Arc<str>>,
     #[serde(rename = "iconUrl", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub icon_url: Option<Option<String>>,
+    pub icon_url: Option<Option<std::sync::Arc<str>>>,
     #[serde(rename = "bannerUrl", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub banner_url: Option<Option<String>>,
+    pub banner_url: Option<Option<std::sync::Arc<str>>>,
     /// A users unique ID, usually in the form of `usr_c1644b5b-3ca4-45b4-97c6-a2a0de70d469`. Legacy players can have old IDs in the form of `8JoV9XEdpo`. The ID can never be changed.
     #[serde(rename = "ownerId", skip_serializing_if = "Option::is_none")]
-    pub owner_id: Option<String>,
+    pub owner_id: Option<std::sync::Arc<str>>,
     #[serde(rename = "rules", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub rules: Option<Option<String>>,
+    pub rules: Option<Option<std::sync::Arc<str>>>,
     #[serde(rename = "iconId", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub icon_id: Option<Option<String>>,
+    pub icon_id: Option<Option<std::sync::Arc<str>>>,
     #[serde(rename = "bannerId", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub banner_id: Option<Option<String>>,
+    pub banner_id: Option<Option<std::sync::Arc<str>>>,
     #[serde(rename = "memberCount", skip_serializing_if = "Option::is_none")]
     pub member_count: Option<i32>,
     ///  
     #[serde(rename = "tags", skip_serializing_if = "Option::is_none")]
-    pub tags: Option<Vec<String>>,
+    pub tags: Option<Vec<std::sync::Arc<str>>>,
     #[serde(rename = "createdAt", skip_serializing_if = "Option::is_none")]
-    pub created_at: Option<String>,
+    pub created_at: Option<std::sync::Arc<str>>,
     #[serde(rename = "membershipStatus", skip_serializing_if = "Option::is_none")]
     pub membership_status: Option<crate::models::GroupMemberStatus>,
     #[serde(rename = "isSearchable", skip_serializing_if = "Option::is_none")]

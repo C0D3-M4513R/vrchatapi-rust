@@ -9,30 +9,30 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct UpdateGroupRequest {
     #[serde(rename = "name", skip_serializing_if = "Option::is_none")]
-    pub name: Option<String>,
+    pub name: Option<std::sync::Arc<str>>,
     #[serde(rename = "shortCode", skip_serializing_if = "Option::is_none")]
-    pub short_code: Option<String>,
+    pub short_code: Option<std::sync::Arc<str>>,
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<std::sync::Arc<str>>,
     #[serde(rename = "joinState", skip_serializing_if = "Option::is_none")]
     pub join_state: Option<crate::models::GroupJoinState>,
     #[serde(rename = "iconId", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub icon_id: Option<Option<String>>,
+    pub icon_id: Option<Option<std::sync::Arc<str>>>,
     #[serde(rename = "bannerId", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub banner_id: Option<Option<String>>,
+    pub banner_id: Option<Option<std::sync::Arc<str>>>,
     /// 3 letter language code
     #[serde(rename = "languages", skip_serializing_if = "Option::is_none")]
-    pub languages: Option<Vec<String>>,
+    pub languages: Option<Vec<std::sync::Arc<str>>>,
     #[serde(rename = "links", skip_serializing_if = "Option::is_none")]
-    pub links: Option<Vec<String>>,
+    pub links: Option<Vec<std::sync::Arc<str>>>,
     #[serde(rename = "rules", skip_serializing_if = "Option::is_none")]
-    pub rules: Option<String>,
+    pub rules: Option<std::sync::Arc<str>>,
     ///  
     #[serde(rename = "tags", skip_serializing_if = "Option::is_none")]
-    pub tags: Option<Vec<String>>,
+    pub tags: Option<Vec<std::sync::Arc<str>>>,
 }
 
 impl UpdateGroupRequest {

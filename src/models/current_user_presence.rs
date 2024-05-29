@@ -9,40 +9,40 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct CurrentUserPresence {
     #[serde(rename = "avatarThumbnail", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub avatar_thumbnail: Option<Option<String>>,
+    pub avatar_thumbnail: Option<Option<std::sync::Arc<str>>>,
     #[serde(rename = "displayName", skip_serializing_if = "Option::is_none")]
-    pub display_name: Option<String>,
+    pub display_name: Option<std::sync::Arc<str>>,
     #[serde(rename = "groups", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub groups: Option<Option<Vec<String>>>,
+    pub groups: Option<Option<Vec<std::sync::Arc<str>>>>,
     /// A users unique ID, usually in the form of `usr_c1644b5b-3ca4-45b4-97c6-a2a0de70d469`. Legacy players can have old IDs in the form of `8JoV9XEdpo`. The ID can never be changed.
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+    pub id: Option<std::sync::Arc<str>>,
     #[serde(rename = "instance", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub instance: Option<Option<String>>,
+    pub instance: Option<Option<std::sync::Arc<str>>>,
     /// either an InstanceType or an empty string
     #[serde(rename = "instanceType", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub instance_type: Option<Option<String>>,
+    pub instance_type: Option<Option<std::sync::Arc<str>>>,
     #[serde(rename = "isRejoining", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub is_rejoining: Option<Option<String>>,
+    pub is_rejoining: Option<Option<std::sync::Arc<str>>>,
     /// either a Platform or an empty string
     #[serde(rename = "platform", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub platform: Option<Option<String>>,
+    pub platform: Option<Option<std::sync::Arc<str>>>,
     #[serde(rename = "profilePicOverride", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub profile_pic_override: Option<Option<String>>,
+    pub profile_pic_override: Option<Option<std::sync::Arc<str>>>,
     /// either a UserStatus or empty string
     #[serde(rename = "status", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub status: Option<Option<String>>,
+    pub status: Option<Option<std::sync::Arc<str>>>,
     #[serde(rename = "travelingToInstance", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub traveling_to_instance: Option<Option<String>>,
+    pub traveling_to_instance: Option<Option<std::sync::Arc<str>>>,
     /// WorldID be \"offline\" on User profiles if you are not friends with that user.
     #[serde(rename = "travelingToWorld", skip_serializing_if = "Option::is_none")]
-    pub traveling_to_world: Option<String>,
+    pub traveling_to_world: Option<std::sync::Arc<str>>,
     /// WorldID be \"offline\" on User profiles if you are not friends with that user.
     #[serde(rename = "world", skip_serializing_if = "Option::is_none")]
-    pub world: Option<String>,
+    pub world: Option<std::sync::Arc<str>>,
 }
 
 impl CurrentUserPresence {

@@ -10,27 +10,27 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct FileData {
     #[serde(rename = "category")]
     pub category: Category,
     #[serde(rename = "fileName")]
-    pub file_name: String,
+    pub file_name: std::sync::Arc<str>,
     #[serde(rename = "md5")]
-    pub md5: String,
+    pub md5: std::sync::Arc<str>,
     #[serde(rename = "sizeInBytes")]
     pub size_in_bytes: i32,
     #[serde(rename = "status")]
     pub status: crate::models::FileStatus,
     #[serde(rename = "uploadId")]
-    pub upload_id: String,
+    pub upload_id: std::sync::Arc<str>,
     #[serde(rename = "url")]
-    pub url: String,
+    pub url: std::sync::Arc<str>,
 }
 
 impl FileData {
     /// 
-    pub fn new(category: Category, file_name: String, md5: String, size_in_bytes: i32, status: crate::models::FileStatus, upload_id: String, url: String) -> FileData {
+    pub fn new(category: Category, file_name: std::sync::Arc<str>, md5: std::sync::Arc<str>, size_in_bytes: i32, status: crate::models::FileStatus, upload_id: std::sync::Arc<str>, url: std::sync::Arc<str>) -> FileData {
         FileData {
             category,
             file_name,

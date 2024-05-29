@@ -10,22 +10,22 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct FinishFileDataUploadRequest {
     /// Array of ETags uploaded.
     #[serde(rename = "etags", skip_serializing_if = "Option::is_none")]
-    pub etags: Option<Vec<String>>,
+    pub etags: Option<Vec<std::sync::Arc<str>>>,
     /// Always a zero in string form, despite how many parts uploaded.
     #[serde(rename = "nextPartNumber")]
-    pub next_part_number: String,
+    pub next_part_number: std::sync::Arc<str>,
     /// Always a zero in string form, despite how many parts uploaded.
     #[serde(rename = "maxParts")]
-    pub max_parts: String,
+    pub max_parts: std::sync::Arc<str>,
 }
 
 impl FinishFileDataUploadRequest {
     /// 
-    pub fn new(next_part_number: String, max_parts: String) -> FinishFileDataUploadRequest {
+    pub fn new(next_part_number: std::sync::Arc<str>, max_parts: std::sync::Arc<str>) -> FinishFileDataUploadRequest {
         FinishFileDataUploadRequest {
             etags: None,
             next_part_number,

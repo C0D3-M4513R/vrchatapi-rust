@@ -9,35 +9,35 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct GroupMyMember {
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+    pub id: Option<std::sync::Arc<str>>,
     #[serde(rename = "groupId", skip_serializing_if = "Option::is_none")]
-    pub group_id: Option<String>,
+    pub group_id: Option<std::sync::Arc<str>>,
     /// A users unique ID, usually in the form of `usr_c1644b5b-3ca4-45b4-97c6-a2a0de70d469`. Legacy players can have old IDs in the form of `8JoV9XEdpo`. The ID can never be changed.
     #[serde(rename = "userId", skip_serializing_if = "Option::is_none")]
-    pub user_id: Option<String>,
+    pub user_id: Option<std::sync::Arc<str>>,
     #[serde(rename = "roleIds", skip_serializing_if = "Option::is_none")]
-    pub role_ids: Option<Vec<String>>,
+    pub role_ids: Option<Vec<std::sync::Arc<str>>>,
     #[serde(rename = "managerNotes", skip_serializing_if = "Option::is_none")]
-    pub manager_notes: Option<String>,
+    pub manager_notes: Option<std::sync::Arc<str>>,
     #[serde(rename = "membershipStatus", skip_serializing_if = "Option::is_none")]
-    pub membership_status: Option<String>,
+    pub membership_status: Option<std::sync::Arc<str>>,
     #[serde(rename = "isSubscribedToAnnouncements", skip_serializing_if = "Option::is_none")]
     pub is_subscribed_to_announcements: Option<bool>,
     #[serde(rename = "visibility", skip_serializing_if = "Option::is_none")]
-    pub visibility: Option<String>,
+    pub visibility: Option<std::sync::Arc<str>>,
     #[serde(rename = "isRepresenting", skip_serializing_if = "Option::is_none")]
     pub is_representing: Option<bool>,
     #[serde(rename = "joinedAt", skip_serializing_if = "Option::is_none")]
-    pub joined_at: Option<String>,
+    pub joined_at: Option<std::sync::Arc<str>>,
     #[serde(rename = "bannedAt", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub banned_at: Option<Option<String>>,
+    pub banned_at: Option<Option<std::sync::Arc<str>>>,
     #[serde(rename = "has2FA", skip_serializing_if = "Option::is_none")]
     pub has2_fa: Option<bool>,
     #[serde(rename = "permissions", skip_serializing_if = "Option::is_none")]
-    pub permissions: Option<Vec<String>>,
+    pub permissions: Option<Vec<std::sync::Arc<str>>>,
 }
 
 impl GroupMyMember {

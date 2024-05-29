@@ -10,19 +10,19 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ApiConfigAnnouncement {
     /// Announcement name
     #[serde(rename = "name")]
-    pub name: String,
+    pub name: std::sync::Arc<str>,
     /// Announcement text
     #[serde(rename = "text")]
-    pub text: String,
+    pub text: std::sync::Arc<str>,
 }
 
 impl ApiConfigAnnouncement {
     /// Public Announcement
-    pub fn new(name: String, text: String) -> ApiConfigAnnouncement {
+    pub fn new(name: std::sync::Arc<str>, text: std::sync::Arc<str>) -> ApiConfigAnnouncement {
         ApiConfigAnnouncement {
             name,
             text,

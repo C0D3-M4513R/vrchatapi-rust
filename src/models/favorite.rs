@@ -10,13 +10,13 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Favorite {
     /// MUST be either AvatarID, UserID or WorldID.
     #[serde(rename = "favoriteId")]
-    pub favorite_id: String,
+    pub favorite_id: std::sync::Arc<str>,
     #[serde(rename = "id")]
-    pub id: String,
+    pub id: std::sync::Arc<str>,
     ///  
     #[serde(rename = "tags")]
     pub tags: Vec<crate::models::tags::Tags>,
@@ -26,7 +26,7 @@ pub struct Favorite {
 
 impl Favorite {
     /// 
-    pub fn new(favorite_id: String, id: String, tags: Vec<crate::models::tags::Tags>, r#type: crate::models::FavoriteType) -> Favorite {
+    pub fn new(favorite_id: std::sync::Arc<str>, id: std::sync::Arc<str>, tags: Vec<crate::models::tags::Tags>, r#type: crate::models::FavoriteType) -> Favorite {
         Favorite {
             favorite_id,
             id,

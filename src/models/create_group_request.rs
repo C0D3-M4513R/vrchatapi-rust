@@ -9,20 +9,20 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct CreateGroupRequest {
     #[serde(rename = "name")]
-    pub name: String,
+    pub name: std::sync::Arc<str>,
     #[serde(rename = "shortCode")]
-    pub short_code: String,
+    pub short_code: std::sync::Arc<str>,
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<std::sync::Arc<str>>,
     #[serde(rename = "joinState", skip_serializing_if = "Option::is_none")]
     pub join_state: Option<crate::models::GroupJoinState>,
     #[serde(rename = "iconId", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub icon_id: Option<Option<String>>,
+    pub icon_id: Option<Option<std::sync::Arc<str>>>,
     #[serde(rename = "bannerId", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub banner_id: Option<Option<String>>,
+    pub banner_id: Option<Option<std::sync::Arc<str>>>,
     #[serde(rename = "privacy", skip_serializing_if = "Option::is_none")]
     pub privacy: Option<crate::models::GroupPrivacy>,
     #[serde(rename = "roleTemplate")]
@@ -30,7 +30,7 @@ pub struct CreateGroupRequest {
 }
 
 impl CreateGroupRequest {
-    pub fn new(name: String, short_code: String, role_template: crate::models::GroupRoleTemplate) -> CreateGroupRequest {
+    pub fn new(name: std::sync::Arc<str>, short_code: std::sync::Arc<str>, role_template: crate::models::GroupRoleTemplate) -> CreateGroupRequest {
         CreateGroupRequest {
             name,
             short_code,

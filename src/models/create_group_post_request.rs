@@ -9,28 +9,28 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct CreateGroupPostRequest {
     /// Post title
     #[serde(rename = "title")]
-    pub title: String,
+    pub title: std::sync::Arc<str>,
     /// Post text
     #[serde(rename = "text")]
-    pub text: String,
+    pub text: std::sync::Arc<str>,
     #[serde(rename = "imageId", skip_serializing_if = "Option::is_none")]
-    pub image_id: Option<String>,
+    pub image_id: Option<std::sync::Arc<str>>,
     /// Send notification to group members.
     #[serde(rename = "sendNotification")]
     pub send_notification: bool,
     ///  
     #[serde(rename = "roleIds", skip_serializing_if = "Option::is_none")]
-    pub role_ids: Option<Vec<String>>,
+    pub role_ids: Option<Vec<std::sync::Arc<str>>>,
     #[serde(rename = "visibility")]
     pub visibility: crate::models::GroupPostVisibility,
 }
 
 impl CreateGroupPostRequest {
-    pub fn new(title: String, text: String, send_notification: bool, visibility: crate::models::GroupPostVisibility) -> CreateGroupPostRequest {
+    pub fn new(title: std::sync::Arc<str>, text: std::sync::Arc<str>, send_notification: bool, visibility: crate::models::GroupPostVisibility) -> CreateGroupPostRequest {
         CreateGroupPostRequest {
             title,
             text,

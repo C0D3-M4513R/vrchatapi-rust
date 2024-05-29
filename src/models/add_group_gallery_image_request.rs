@@ -9,14 +9,14 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct AddGroupGalleryImageRequest {
     #[serde(rename = "fileId")]
-    pub file_id: String,
+    pub file_id: std::sync::Arc<str>,
 }
 
 impl AddGroupGalleryImageRequest {
-    pub fn new(file_id: String) -> AddGroupGalleryImageRequest {
+    pub fn new(file_id: std::sync::Arc<str>) -> AddGroupGalleryImageRequest {
         AddGroupGalleryImageRequest {
             file_id,
         }

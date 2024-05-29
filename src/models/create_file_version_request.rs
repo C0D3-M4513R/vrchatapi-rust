@@ -9,20 +9,20 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct CreateFileVersionRequest {
     #[serde(rename = "signatureMd5")]
-    pub signature_md5: String,
+    pub signature_md5: std::sync::Arc<str>,
     #[serde(rename = "signatureSizeInBytes")]
     pub signature_size_in_bytes: f32,
     #[serde(rename = "fileMd5", skip_serializing_if = "Option::is_none")]
-    pub file_md5: Option<String>,
+    pub file_md5: Option<std::sync::Arc<str>>,
     #[serde(rename = "fileSizeInBytes", skip_serializing_if = "Option::is_none")]
     pub file_size_in_bytes: Option<f32>,
 }
 
 impl CreateFileVersionRequest {
-    pub fn new(signature_md5: String, signature_size_in_bytes: f32) -> CreateFileVersionRequest {
+    pub fn new(signature_md5: std::sync::Arc<str>, signature_size_in_bytes: f32) -> CreateFileVersionRequest {
         CreateFileVersionRequest {
             signature_md5,
             signature_size_in_bytes,

@@ -9,33 +9,33 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct CreateAvatarRequest {
     #[serde(rename = "assetUrl", skip_serializing_if = "Option::is_none")]
-    pub asset_url: Option<String>,
+    pub asset_url: Option<std::sync::Arc<str>>,
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+    pub id: Option<std::sync::Arc<str>>,
     #[serde(rename = "name")]
-    pub name: String,
+    pub name: std::sync::Arc<str>,
     #[serde(rename = "description", skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
+    pub description: Option<std::sync::Arc<str>>,
     ///  
     #[serde(rename = "tags", skip_serializing_if = "Option::is_none")]
-    pub tags: Option<Vec<String>>,
+    pub tags: Option<Vec<std::sync::Arc<str>>>,
     #[serde(rename = "imageUrl")]
-    pub image_url: String,
+    pub image_url: std::sync::Arc<str>,
     #[serde(rename = "releaseStatus", skip_serializing_if = "Option::is_none")]
     pub release_status: Option<crate::models::ReleaseStatus>,
     #[serde(rename = "version", skip_serializing_if = "Option::is_none")]
     pub version: Option<f32>,
     #[serde(rename = "unityPackageUrl", skip_serializing_if = "Option::is_none")]
-    pub unity_package_url: Option<String>,
+    pub unity_package_url: Option<std::sync::Arc<str>>,
     #[serde(rename = "unityVersion", skip_serializing_if = "Option::is_none")]
-    pub unity_version: Option<String>,
+    pub unity_version: Option<std::sync::Arc<str>>,
 }
 
 impl CreateAvatarRequest {
-    pub fn new(name: String, image_url: String) -> CreateAvatarRequest {
+    pub fn new(name: std::sync::Arc<str>, image_url: std::sync::Arc<str>) -> CreateAvatarRequest {
         CreateAvatarRequest {
             asset_url: None,
             id: None,

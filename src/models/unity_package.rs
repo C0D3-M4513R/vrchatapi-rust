@@ -10,40 +10,40 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct UnityPackage {
     #[serde(rename = "id")]
-    pub id: String,
+    pub id: std::sync::Arc<str>,
     #[serde(rename = "assetUrl", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub asset_url: Option<Option<String>>,
+    pub asset_url: Option<Option<std::sync::Arc<str>>>,
     #[serde(rename = "assetUrlObject", skip_serializing_if = "Option::is_none")]
     pub asset_url_object: Option<serde_json::Value>,
     #[serde(rename = "assetVersion")]
     pub asset_version: i32,
     #[serde(rename = "created_at", skip_serializing_if = "Option::is_none")]
-    pub created_at: Option<String>,
+    pub created_at: Option<std::sync::Arc<str>>,
     /// This can be `standalonewindows` or `android`, but can also pretty much be any random Unity verison such as `2019.2.4-801-Release` or `2019.2.2-772-Release` or even `unknownplatform`.
     #[serde(rename = "platform")]
-    pub platform: String,
+    pub platform: std::sync::Arc<str>,
     #[serde(rename = "pluginUrl", skip_serializing_if = "Option::is_none")]
-    pub plugin_url: Option<String>,
+    pub plugin_url: Option<std::sync::Arc<str>>,
     #[serde(rename = "pluginUrlObject", skip_serializing_if = "Option::is_none")]
     pub plugin_url_object: Option<serde_json::Value>,
     #[serde(rename = "unitySortNumber", skip_serializing_if = "Option::is_none")]
     pub unity_sort_number: Option<i64>,
     #[serde(rename = "unityVersion")]
-    pub unity_version: String,
+    pub unity_version: std::sync::Arc<str>,
     #[serde(rename = "impostorUrl", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub impostor_url: Option<Option<String>>,
+    pub impostor_url: Option<Option<std::sync::Arc<str>>>,
     #[serde(rename = "scanStatus", skip_serializing_if = "Option::is_none")]
-    pub scan_status: Option<String>,
+    pub scan_status: Option<std::sync::Arc<str>>,
     #[serde(rename = "variant", skip_serializing_if = "Option::is_none")]
-    pub variant: Option<String>,
+    pub variant: Option<std::sync::Arc<str>>,
 }
 
 impl UnityPackage {
     /// 
-    pub fn new(id: String, asset_version: i32, platform: String, unity_version: String) -> UnityPackage {
+    pub fn new(id: std::sync::Arc<str>, asset_version: i32, platform: std::sync::Arc<str>, unity_version: std::sync::Arc<str>) -> UnityPackage {
         UnityPackage {
             id,
             asset_url: None,

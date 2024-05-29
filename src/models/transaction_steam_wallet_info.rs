@@ -10,21 +10,21 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TransactionSteamWalletInfo {
     #[serde(rename = "state")]
-    pub state: String,
+    pub state: std::sync::Arc<str>,
     #[serde(rename = "country")]
-    pub country: String,
+    pub country: std::sync::Arc<str>,
     #[serde(rename = "currency")]
-    pub currency: String,
+    pub currency: std::sync::Arc<str>,
     #[serde(rename = "status")]
-    pub status: String,
+    pub status: std::sync::Arc<str>,
 }
 
 impl TransactionSteamWalletInfo {
     /// 
-    pub fn new(state: String, country: String, currency: String, status: String) -> TransactionSteamWalletInfo {
+    pub fn new(state: std::sync::Arc<str>, country: std::sync::Arc<str>, currency: std::sync::Arc<str>, status: std::sync::Arc<str>) -> TransactionSteamWalletInfo {
         TransactionSteamWalletInfo {
             state,
             country,

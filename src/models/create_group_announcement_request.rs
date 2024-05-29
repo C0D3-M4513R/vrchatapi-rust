@@ -9,23 +9,23 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct CreateGroupAnnouncementRequest {
     /// Announcement title
     #[serde(rename = "title")]
-    pub title: String,
+    pub title: std::sync::Arc<str>,
     /// Announcement text
     #[serde(rename = "text", skip_serializing_if = "Option::is_none")]
-    pub text: Option<String>,
+    pub text: Option<std::sync::Arc<str>>,
     #[serde(rename = "imageId", skip_serializing_if = "Option::is_none")]
-    pub image_id: Option<String>,
+    pub image_id: Option<std::sync::Arc<str>>,
     /// Send notification to group members.
     #[serde(rename = "sendNotification", skip_serializing_if = "Option::is_none")]
     pub send_notification: Option<bool>,
 }
 
 impl CreateGroupAnnouncementRequest {
-    pub fn new(title: String) -> CreateGroupAnnouncementRequest {
+    pub fn new(title: std::sync::Arc<str>) -> CreateGroupAnnouncementRequest {
         CreateGroupAnnouncementRequest {
             title,
             text: None,

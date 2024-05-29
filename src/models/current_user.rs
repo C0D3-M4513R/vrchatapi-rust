@@ -9,67 +9,67 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct CurrentUser {
     #[serde(rename = "acceptedTOSVersion")]
     pub accepted_tos_version: i32,
     #[serde(rename = "acceptedPrivacyVersion", skip_serializing_if = "Option::is_none")]
     pub accepted_privacy_version: Option<i32>,
     #[serde(rename = "accountDeletionDate", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub account_deletion_date: Option<Option<String>>,
+    pub account_deletion_date: Option<Option<std::sync::Arc<str>>>,
     ///  
     #[serde(rename = "accountDeletionLog", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
     pub account_deletion_log: Option<Option<Vec<crate::models::AccountDeletionLog>>>,
     ///  
     #[serde(rename = "activeFriends", skip_serializing_if = "Option::is_none")]
-    pub active_friends: Option<Vec<String>>,
+    pub active_friends: Option<Vec<std::sync::Arc<str>>>,
     #[serde(rename = "allowAvatarCopying")]
     pub allow_avatar_copying: bool,
     ///  
     #[serde(rename = "badges", skip_serializing_if = "Option::is_none")]
     pub badges: Option<Vec<crate::models::Badge>>,
     #[serde(rename = "bio")]
-    pub bio: String,
+    pub bio: std::sync::Arc<str>,
     ///  
     #[serde(rename = "bioLinks")]
-    pub bio_links: Vec<String>,
+    pub bio_links: Vec<std::sync::Arc<str>>,
     #[serde(rename = "currentAvatar")]
-    pub current_avatar: String,
+    pub current_avatar: std::sync::Arc<str>,
     #[serde(rename = "currentAvatarAssetUrl")]
-    pub current_avatar_asset_url: String,
+    pub current_avatar_asset_url: std::sync::Arc<str>,
     /// When profilePicOverride is not empty, use it instead.
     #[serde(rename = "currentAvatarImageUrl")]
-    pub current_avatar_image_url: String,
+    pub current_avatar_image_url: std::sync::Arc<str>,
     /// When profilePicOverride is not empty, use it instead.
     #[serde(rename = "currentAvatarThumbnailImageUrl")]
-    pub current_avatar_thumbnail_image_url: String,
+    pub current_avatar_thumbnail_image_url: std::sync::Arc<str>,
     #[serde(rename = "currentAvatarTags")]
     pub current_avatar_tags: Vec<crate::models::tags::Tags>,
     #[serde(rename = "date_joined")]
-    pub date_joined: String,
+    pub date_joined: std::sync::Arc<str>,
     #[serde(rename = "developerType")]
     pub developer_type: crate::models::DeveloperType,
     #[serde(rename = "displayName")]
-    pub display_name: String,
+    pub display_name: std::sync::Arc<str>,
     #[serde(rename = "emailVerified")]
     pub email_verified: bool,
     #[serde(rename = "fallbackAvatar", skip_serializing_if = "Option::is_none")]
-    pub fallback_avatar: Option<String>,
+    pub fallback_avatar: Option<std::sync::Arc<str>>,
     /// Always empty array.
     #[serde(rename = "friendGroupNames")]
-    pub friend_group_names: Vec<String>,
+    pub friend_group_names: Vec<std::sync::Arc<str>>,
     #[serde(rename = "friendKey")]
-    pub friend_key: String,
+    pub friend_key: std::sync::Arc<str>,
     #[serde(rename = "friends")]
-    pub friends: Vec<String>,
+    pub friends: Vec<std::sync::Arc<str>>,
     #[serde(rename = "hasBirthday")]
     pub has_birthday: bool,
     #[serde(rename = "hideContentFilterSettings", skip_serializing_if = "Option::is_none")]
     pub hide_content_filter_settings: Option<bool>,
     #[serde(rename = "userLanguage", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub user_language: Option<Option<String>>,
+    pub user_language: Option<Option<std::sync::Arc<str>>>,
     #[serde(rename = "userLanguageCode", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub user_language_code: Option<Option<String>>,
+    pub user_language_code: Option<Option<std::sync::Arc<str>>>,
     #[serde(rename = "hasEmail")]
     pub has_email: bool,
     #[serde(rename = "hasLoggedInFromClient")]
@@ -78,81 +78,81 @@ pub struct CurrentUser {
     pub has_pending_email: bool,
     /// WorldID be \"offline\" on User profiles if you are not friends with that user.
     #[serde(rename = "homeLocation")]
-    pub home_location: String,
+    pub home_location: std::sync::Arc<str>,
     /// A users unique ID, usually in the form of `usr_c1644b5b-3ca4-45b4-97c6-a2a0de70d469`. Legacy players can have old IDs in the form of `8JoV9XEdpo`. The ID can never be changed.
     #[serde(rename = "id")]
-    pub id: String,
+    pub id: std::sync::Arc<str>,
     #[serde(rename = "isFriend")]
     pub is_friend: bool,
     #[serde(rename = "last_activity", skip_serializing_if = "Option::is_none")]
-    pub last_activity: Option<String>,
+    pub last_activity: Option<std::sync::Arc<str>>,
     #[serde(rename = "last_login")]
-    pub last_login: String,
+    pub last_login: std::sync::Arc<str>,
     #[serde(rename = "last_mobile", deserialize_with = "Option::deserialize")]
-    pub last_mobile: Option<String>,
+    pub last_mobile: Option<std::sync::Arc<str>>,
     /// This can be `standalonewindows` or `android`, but can also pretty much be any random Unity verison such as `2019.2.4-801-Release` or `2019.2.2-772-Release` or even `unknownplatform`.
     #[serde(rename = "last_platform")]
-    pub last_platform: String,
+    pub last_platform: std::sync::Arc<str>,
     #[serde(rename = "obfuscatedEmail")]
-    pub obfuscated_email: String,
+    pub obfuscated_email: std::sync::Arc<str>,
     #[serde(rename = "obfuscatedPendingEmail")]
-    pub obfuscated_pending_email: String,
+    pub obfuscated_pending_email: std::sync::Arc<str>,
     #[serde(rename = "oculusId")]
-    pub oculus_id: String,
+    pub oculus_id: std::sync::Arc<str>,
     #[serde(rename = "googleId", skip_serializing_if = "Option::is_none")]
-    pub google_id: Option<String>,
+    pub google_id: Option<std::sync::Arc<str>>,
     #[serde(rename = "googleDetails", skip_serializing_if = "Option::is_none")]
     pub google_details: Option<serde_json::Value>,
     #[serde(rename = "picoId", skip_serializing_if = "Option::is_none")]
-    pub pico_id: Option<String>,
+    pub pico_id: Option<std::sync::Arc<str>>,
     #[serde(rename = "viveId", skip_serializing_if = "Option::is_none")]
-    pub vive_id: Option<String>,
+    pub vive_id: Option<std::sync::Arc<str>>,
     #[serde(rename = "offlineFriends", skip_serializing_if = "Option::is_none")]
-    pub offline_friends: Option<Vec<String>>,
+    pub offline_friends: Option<Vec<std::sync::Arc<str>>>,
     #[serde(rename = "onlineFriends", skip_serializing_if = "Option::is_none")]
-    pub online_friends: Option<Vec<String>>,
+    pub online_friends: Option<Vec<std::sync::Arc<str>>>,
     ///  
     #[serde(rename = "pastDisplayNames")]
     pub past_display_names: Vec<crate::models::PastDisplayName>,
     #[serde(rename = "presence", skip_serializing_if = "Option::is_none")]
     pub presence: Option<Box<crate::models::CurrentUserPresence>>,
     #[serde(rename = "profilePicOverride")]
-    pub profile_pic_override: String,
+    pub profile_pic_override: std::sync::Arc<str>,
     #[serde(rename = "pronouns")]
-    pub pronouns: String,
+    pub pronouns: std::sync::Arc<str>,
     #[serde(rename = "state")]
     pub state: crate::models::UserState,
     #[serde(rename = "status")]
     pub status: crate::models::UserStatus,
     #[serde(rename = "statusDescription")]
-    pub status_description: String,
+    pub status_description: std::sync::Arc<str>,
     #[serde(rename = "statusFirstTime")]
     pub status_first_time: bool,
     #[serde(rename = "statusHistory")]
-    pub status_history: Vec<String>,
+    pub status_history: Vec<std::sync::Arc<str>>,
     #[serde(rename = "steamDetails")]
     pub steam_details: serde_json::Value,
     #[serde(rename = "steamId")]
-    pub steam_id: String,
+    pub steam_id: std::sync::Arc<str>,
     #[serde(rename = "tags")]
     pub tags: Vec<crate::models::tags::Tags>,
     #[serde(rename = "twoFactorAuthEnabled")]
     pub two_factor_auth_enabled: bool,
     #[serde(rename = "twoFactorAuthEnabledDate", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub two_factor_auth_enabled_date: Option<Option<String>>,
+    pub two_factor_auth_enabled_date: Option<Option<std::sync::Arc<str>>>,
     #[serde(rename = "unsubscribe")]
     pub unsubscribe: bool,
     #[serde(rename = "updated_at", skip_serializing_if = "Option::is_none")]
-    pub updated_at: Option<String>,
+    pub updated_at: Option<std::sync::Arc<str>>,
     #[serde(rename = "userIcon")]
-    pub user_icon: String,
+    pub user_icon: std::sync::Arc<str>,
     /// -| **DEPRECATED:** VRChat API no longer return usernames of other users. [See issue by Tupper for more information](https://github.com/pypy-vrc/VRCX/issues/429).
     #[serde(rename = "username", skip_serializing_if = "Option::is_none")]
-    pub username: Option<String>,
+    pub username: Option<std::sync::Arc<str>>,
 }
 
 impl CurrentUser {
-    pub fn new(accepted_tos_version: i32, allow_avatar_copying: bool, bio: String, bio_links: Vec<String>, current_avatar: String, current_avatar_asset_url: String, current_avatar_image_url: String, current_avatar_thumbnail_image_url: String, current_avatar_tags: Vec<crate::models::tags::Tags>, date_joined: String, developer_type: crate::models::DeveloperType, display_name: String, email_verified: bool, friend_group_names: Vec<String>, friend_key: String, friends: Vec<String>, has_birthday: bool, has_email: bool, has_logged_in_from_client: bool, has_pending_email: bool, home_location: String, id: String, is_friend: bool, last_login: String, last_mobile: Option<String>, last_platform: String, obfuscated_email: String, obfuscated_pending_email: String, oculus_id: String, past_display_names: Vec<crate::models::PastDisplayName>, profile_pic_override: String, pronouns: String, state: crate::models::UserState, status: crate::models::UserStatus, status_description: String, status_first_time: bool, status_history: Vec<String>, steam_details: serde_json::Value, steam_id: String, tags: Vec<crate::models::tags::Tags>, two_factor_auth_enabled: bool, unsubscribe: bool, user_icon: String) -> CurrentUser {
+    pub fn new(accepted_tos_version: i32, allow_avatar_copying: bool, bio: std::sync::Arc<str>, bio_links: Vec<std::sync::Arc<str>>, current_avatar: std::sync::Arc<str>, current_avatar_asset_url: std::sync::Arc<str>, current_avatar_image_url: std::sync::Arc<str>, current_avatar_thumbnail_image_url: std::sync::Arc<str>, current_avatar_tags: Vec<crate::models::tags::Tags>, date_joined: std::sync::Arc<str>, developer_type: crate::models::DeveloperType, display_name: std::sync::Arc<str>, email_verified: bool, friend_group_names: Vec<std::sync::Arc<str>>, friend_key: std::sync::Arc<str>, friends: Vec<std::sync::Arc<str>>, has_birthday: bool, has_email: bool, has_logged_in_from_client: bool, has_pending_email: bool, home_location: std::sync::Arc<str>, id: std::sync::Arc<str>, is_friend: bool, last_login: std::sync::Arc<str>, last_mobile: Option<std::sync::Arc<str>>, last_platform: std::sync::Arc<str>, obfuscated_email: std::sync::Arc<str>, obfuscated_pending_email: std::sync::Arc<str>, oculus_id: std::sync::Arc<str>, past_display_names: Vec<crate::models::PastDisplayName>, profile_pic_override: std::sync::Arc<str>, pronouns: std::sync::Arc<str>, state: crate::models::UserState, status: crate::models::UserStatus, status_description: std::sync::Arc<str>, status_first_time: bool, status_history: Vec<std::sync::Arc<str>>, steam_details: serde_json::Value, steam_id: std::sync::Arc<str>, tags: Vec<crate::models::tags::Tags>, two_factor_auth_enabled: bool, unsubscribe: bool, user_icon: std::sync::Arc<str>) -> CurrentUser {
         CurrentUser {
             accepted_tos_version,
             accepted_privacy_version: None,
@@ -229,8 +229,8 @@ pub enum EitherUserOrTwoFactor{
     RequiresTwoFactorAuth(RequiresTwoFactorAuth),
 }
 
-#[derive(Clone, Debug, PartialEq, Eq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub struct RequiresTwoFactorAuth{
     #[serde(rename = "requiresTwoFactorAuth")]
-    pub requires_two_factor_auth: Vec<String>
+    pub requires_two_factor_auth: Vec<std::sync::Arc<str>>
 }

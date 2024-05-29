@@ -9,20 +9,20 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct AddFavoriteRequest {
     #[serde(rename = "type")]
     pub r#type: crate::models::FavoriteType,
     /// Must be either AvatarID, WorldID or UserID.
     #[serde(rename = "favoriteId")]
-    pub favorite_id: String,
+    pub favorite_id: std::sync::Arc<str>,
     /// Tags indicate which group this favorite belongs to. Adding multiple groups makes it show up in all. Removing it from one in that case removes it from all.
     #[serde(rename = "tags")]
     pub tags: Vec<crate::models::tags::Tags>,
 }
 
 impl AddFavoriteRequest {
-    pub fn new(r#type: crate::models::FavoriteType, favorite_id: String, tags: Vec<crate::models::tags::Tags>) -> AddFavoriteRequest {
+    pub fn new(r#type: crate::models::FavoriteType, favorite_id: std::sync::Arc<str>, tags: Vec<crate::models::tags::Tags>) -> AddFavoriteRequest {
         AddFavoriteRequest {
             r#type,
             favorite_id,

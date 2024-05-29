@@ -10,18 +10,18 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct LimitedUnityPackage {
     /// This can be `standalonewindows` or `android`, but can also pretty much be any random Unity verison such as `2019.2.4-801-Release` or `2019.2.2-772-Release` or even `unknownplatform`.
     #[serde(rename = "platform")]
-    pub platform: String,
+    pub platform: std::sync::Arc<str>,
     #[serde(rename = "unityVersion")]
-    pub unity_version: String,
+    pub unity_version: std::sync::Arc<str>,
 }
 
 impl LimitedUnityPackage {
     /// 
-    pub fn new(platform: String, unity_version: String) -> LimitedUnityPackage {
+    pub fn new(platform: std::sync::Arc<str>, unity_version: std::sync::Arc<str>) -> LimitedUnityPackage {
         LimitedUnityPackage {
             platform,
             unity_version,

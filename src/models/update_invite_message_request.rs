@@ -9,14 +9,14 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct UpdateInviteMessageRequest {
     #[serde(rename = "message")]
-    pub message: String,
+    pub message: std::sync::Arc<str>,
 }
 
 impl UpdateInviteMessageRequest {
-    pub fn new(message: String) -> UpdateInviteMessageRequest {
+    pub fn new(message: std::sync::Arc<str>) -> UpdateInviteMessageRequest {
         UpdateInviteMessageRequest {
             message,
         }

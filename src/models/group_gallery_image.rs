@@ -9,30 +9,30 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct GroupGalleryImage {
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+    pub id: Option<std::sync::Arc<str>>,
     #[serde(rename = "groupId", skip_serializing_if = "Option::is_none")]
-    pub group_id: Option<String>,
+    pub group_id: Option<std::sync::Arc<str>>,
     #[serde(rename = "galleryId", skip_serializing_if = "Option::is_none")]
-    pub gallery_id: Option<String>,
+    pub gallery_id: Option<std::sync::Arc<str>>,
     #[serde(rename = "fileId", skip_serializing_if = "Option::is_none")]
-    pub file_id: Option<String>,
+    pub file_id: Option<std::sync::Arc<str>>,
     #[serde(rename = "imageUrl", skip_serializing_if = "Option::is_none")]
-    pub image_url: Option<String>,
+    pub image_url: Option<std::sync::Arc<str>>,
     #[serde(rename = "createdAt", skip_serializing_if = "Option::is_none")]
-    pub created_at: Option<String>,
+    pub created_at: Option<std::sync::Arc<str>>,
     /// A users unique ID, usually in the form of `usr_c1644b5b-3ca4-45b4-97c6-a2a0de70d469`. Legacy players can have old IDs in the form of `8JoV9XEdpo`. The ID can never be changed.
     #[serde(rename = "submittedByUserId", skip_serializing_if = "Option::is_none")]
-    pub submitted_by_user_id: Option<String>,
+    pub submitted_by_user_id: Option<std::sync::Arc<str>>,
     #[serde(rename = "approved", skip_serializing_if = "Option::is_none")]
     pub approved: Option<bool>,
     /// A users unique ID, usually in the form of `usr_c1644b5b-3ca4-45b4-97c6-a2a0de70d469`. Legacy players can have old IDs in the form of `8JoV9XEdpo`. The ID can never be changed.
     #[serde(rename = "approvedByUserId", skip_serializing_if = "Option::is_none")]
-    pub approved_by_user_id: Option<String>,
+    pub approved_by_user_id: Option<std::sync::Arc<str>>,
     #[serde(rename = "approvedAt", skip_serializing_if = "Option::is_none")]
-    pub approved_at: Option<String>,
+    pub approved_at: Option<std::sync::Arc<str>>,
 }
 
 impl GroupGalleryImage {

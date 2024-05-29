@@ -10,33 +10,33 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct SentNotification {
     #[serde(rename = "created_at")]
-    pub created_at: String,
+    pub created_at: std::sync::Arc<str>,
     #[serde(rename = "details")]
     pub details: serde_json::Value,
     #[serde(rename = "id")]
-    pub id: String,
+    pub id: std::sync::Arc<str>,
     /// 
     #[serde(rename = "message")]
-    pub message: String,
+    pub message: std::sync::Arc<str>,
     /// A users unique ID, usually in the form of `usr_c1644b5b-3ca4-45b4-97c6-a2a0de70d469`. Legacy players can have old IDs in the form of `8JoV9XEdpo`. The ID can never be changed.
     #[serde(rename = "receiverUserId")]
-    pub receiver_user_id: String,
+    pub receiver_user_id: std::sync::Arc<str>,
     /// A users unique ID, usually in the form of `usr_c1644b5b-3ca4-45b4-97c6-a2a0de70d469`. Legacy players can have old IDs in the form of `8JoV9XEdpo`. The ID can never be changed.
     #[serde(rename = "senderUserId")]
-    pub sender_user_id: String,
+    pub sender_user_id: std::sync::Arc<str>,
     /// -| **DEPRECATED:** VRChat API no longer return usernames of other users. [See issue by Tupper for more information](https://github.com/pypy-vrc/VRCX/issues/429).
     #[serde(rename = "senderUsername", skip_serializing_if = "Option::is_none")]
-    pub sender_username: Option<String>,
+    pub sender_username: Option<std::sync::Arc<str>>,
     #[serde(rename = "type")]
     pub r#type: crate::models::NotificationType,
 }
 
 impl SentNotification {
     /// 
-    pub fn new(created_at: String, details: serde_json::Value, id: String, message: String, receiver_user_id: String, sender_user_id: String, r#type: crate::models::NotificationType) -> SentNotification {
+    pub fn new(created_at: std::sync::Arc<str>, details: serde_json::Value, id: std::sync::Arc<str>, message: std::sync::Arc<str>, receiver_user_id: std::sync::Arc<str>, sender_user_id: std::sync::Arc<str>, r#type: crate::models::NotificationType) -> SentNotification {
         SentNotification {
             created_at,
             details,

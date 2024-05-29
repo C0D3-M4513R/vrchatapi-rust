@@ -10,23 +10,23 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct GroupMemberLimitedUser {
     /// A users unique ID, usually in the form of `usr_c1644b5b-3ca4-45b4-97c6-a2a0de70d469`. Legacy players can have old IDs in the form of `8JoV9XEdpo`. The ID can never be changed.
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+    pub id: Option<std::sync::Arc<str>>,
     #[serde(rename = "displayName", skip_serializing_if = "Option::is_none")]
-    pub display_name: Option<String>,
+    pub display_name: Option<std::sync::Arc<str>>,
     #[serde(rename = "thumbnailUrl", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub thumbnail_url: Option<Option<String>>,
+    pub thumbnail_url: Option<Option<std::sync::Arc<str>>>,
     #[serde(rename = "iconUrl", skip_serializing_if = "Option::is_none")]
-    pub icon_url: Option<String>,
+    pub icon_url: Option<std::sync::Arc<str>>,
     #[serde(rename = "profilePicOverride", skip_serializing_if = "Option::is_none")]
-    pub profile_pic_override: Option<String>,
+    pub profile_pic_override: Option<std::sync::Arc<str>>,
     #[serde(rename = "currentAvatarThumbnailImageUrl", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub current_avatar_thumbnail_image_url: Option<Option<String>>,
+    pub current_avatar_thumbnail_image_url: Option<Option<std::sync::Arc<str>>>,
     #[serde(rename = "currentAvatarTags", skip_serializing_if = "Option::is_none")]
-    pub current_avatar_tags: Option<Vec<String>>,
+    pub current_avatar_tags: Option<Vec<std::sync::Arc<str>>>,
 }
 
 impl GroupMemberLimitedUser {

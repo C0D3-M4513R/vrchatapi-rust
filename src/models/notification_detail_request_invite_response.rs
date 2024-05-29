@@ -9,17 +9,17 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct NotificationDetailRequestInviteResponse {
     #[serde(rename = "inResponseTo")]
-    pub in_response_to: String,
+    pub in_response_to: std::sync::Arc<str>,
     /// Used when using InviteMessage Slot.
     #[serde(rename = "requestMessage", skip_serializing_if = "Option::is_none")]
-    pub request_message: Option<String>,
+    pub request_message: Option<std::sync::Arc<str>>,
 }
 
 impl NotificationDetailRequestInviteResponse {
-    pub fn new(in_response_to: String) -> NotificationDetailRequestInviteResponse {
+    pub fn new(in_response_to: std::sync::Arc<str>) -> NotificationDetailRequestInviteResponse {
         NotificationDetailRequestInviteResponse {
             in_response_to,
             request_message: None,

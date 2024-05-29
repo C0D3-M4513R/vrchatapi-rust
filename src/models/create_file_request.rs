@@ -9,21 +9,21 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct CreateFileRequest {
     #[serde(rename = "name")]
-    pub name: String,
+    pub name: std::sync::Arc<str>,
     #[serde(rename = "mimeType")]
     pub mime_type: crate::models::MimeType,
     #[serde(rename = "extension")]
-    pub extension: String,
+    pub extension: std::sync::Arc<str>,
     ///  
     #[serde(rename = "tags", skip_serializing_if = "Option::is_none")]
-    pub tags: Option<Vec<String>>,
+    pub tags: Option<Vec<std::sync::Arc<str>>>,
 }
 
 impl CreateFileRequest {
-    pub fn new(name: String, mime_type: crate::models::MimeType, extension: String) -> CreateFileRequest {
+    pub fn new(name: std::sync::Arc<str>, mime_type: crate::models::MimeType, extension: std::sync::Arc<str>) -> CreateFileRequest {
         CreateFileRequest {
             name,
             mime_type,

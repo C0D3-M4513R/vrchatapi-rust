@@ -10,21 +10,21 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct UserSubscription {
     #[serde(rename = "id")]
-    pub id: String,
+    pub id: std::sync::Arc<str>,
     #[serde(rename = "transactionId")]
-    pub transaction_id: String,
+    pub transaction_id: std::sync::Arc<str>,
     /// Which \"Store\" it came from. Right now only Stores are \"Steam\" and \"Admin\".
     #[serde(rename = "store")]
-    pub store: String,
+    pub store: std::sync::Arc<str>,
     #[serde(rename = "steamItemId", skip_serializing_if = "Option::is_none")]
-    pub steam_item_id: Option<String>,
+    pub steam_item_id: Option<std::sync::Arc<str>>,
     #[serde(rename = "amount")]
     pub amount: f32,
     #[serde(rename = "description")]
-    pub description: String,
+    pub description: std::sync::Arc<str>,
     #[serde(rename = "period")]
     pub period: crate::models::SubscriptionPeriod,
     #[serde(rename = "tier")]
@@ -34,20 +34,20 @@ pub struct UserSubscription {
     #[serde(rename = "status")]
     pub status: crate::models::TransactionStatus,
     #[serde(rename = "expires")]
-    pub expires: String,
+    pub expires: std::sync::Arc<str>,
     #[serde(rename = "created_at")]
-    pub created_at: String,
+    pub created_at: std::sync::Arc<str>,
     #[serde(rename = "updated_at")]
-    pub updated_at: String,
+    pub updated_at: std::sync::Arc<str>,
     #[serde(rename = "licenseGroups")]
-    pub license_groups: Vec<String>,
+    pub license_groups: Vec<std::sync::Arc<str>>,
     #[serde(rename = "isGift")]
     pub is_gift: bool,
 }
 
 impl UserSubscription {
     /// 
-    pub fn new(id: String, transaction_id: String, store: String, amount: f32, description: String, period: crate::models::SubscriptionPeriod, tier: f32, active: bool, status: crate::models::TransactionStatus, expires: String, created_at: String, updated_at: String, license_groups: Vec<String>, is_gift: bool) -> UserSubscription {
+    pub fn new(id: std::sync::Arc<str>, transaction_id: std::sync::Arc<str>, store: std::sync::Arc<str>, amount: f32, description: std::sync::Arc<str>, period: crate::models::SubscriptionPeriod, tier: f32, active: bool, status: crate::models::TransactionStatus, expires: std::sync::Arc<str>, created_at: std::sync::Arc<str>, updated_at: std::sync::Arc<str>, license_groups: Vec<std::sync::Arc<str>>, is_gift: bool) -> UserSubscription {
         UserSubscription {
             id,
             transaction_id,

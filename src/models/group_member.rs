@@ -9,43 +9,43 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct GroupMember {
     #[serde(rename = "id", skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
+    pub id: Option<std::sync::Arc<str>>,
     #[serde(rename = "groupId", skip_serializing_if = "Option::is_none")]
-    pub group_id: Option<String>,
+    pub group_id: Option<std::sync::Arc<str>>,
     /// A users unique ID, usually in the form of `usr_c1644b5b-3ca4-45b4-97c6-a2a0de70d469`. Legacy players can have old IDs in the form of `8JoV9XEdpo`. The ID can never be changed.
     #[serde(rename = "userId", skip_serializing_if = "Option::is_none")]
-    pub user_id: Option<String>,
+    pub user_id: Option<std::sync::Arc<str>>,
     /// Whether the user is representing the group. This makes the group show up above the name tag in-game.
     #[serde(rename = "isRepresenting", skip_serializing_if = "Option::is_none")]
     pub is_representing: Option<bool>,
     #[serde(rename = "user", skip_serializing_if = "Option::is_none")]
     pub user: Option<Box<crate::models::GroupMemberLimitedUser>>,
     #[serde(rename = "roleIds", skip_serializing_if = "Option::is_none")]
-    pub role_ids: Option<Vec<String>>,
+    pub role_ids: Option<Vec<std::sync::Arc<str>>>,
     #[serde(rename = "mRoleIds", skip_serializing_if = "Option::is_none")]
-    pub m_role_ids: Option<Vec<String>>,
+    pub m_role_ids: Option<Vec<std::sync::Arc<str>>>,
     #[serde(rename = "joinedAt", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub joined_at: Option<Option<String>>,
+    pub joined_at: Option<Option<std::sync::Arc<str>>>,
     #[serde(rename = "membershipStatus", skip_serializing_if = "Option::is_none")]
     pub membership_status: Option<crate::models::GroupMemberStatus>,
     #[serde(rename = "visibility", skip_serializing_if = "Option::is_none")]
-    pub visibility: Option<String>,
+    pub visibility: Option<std::sync::Arc<str>>,
     #[serde(rename = "isSubscribedToAnnouncements", skip_serializing_if = "Option::is_none")]
     pub is_subscribed_to_announcements: Option<bool>,
     /// Only visible via the /groups/:groupId/members endpoint, **not** when fetching a specific user.
     #[serde(rename = "createdAt", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub created_at: Option<Option<String>>,
+    pub created_at: Option<Option<std::sync::Arc<str>>>,
     /// Only visible via the /groups/:groupId/members endpoint, **not** when fetching a specific user.
     #[serde(rename = "bannedAt", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub banned_at: Option<Option<String>>,
+    pub banned_at: Option<Option<std::sync::Arc<str>>>,
     /// Only visible via the /groups/:groupId/members endpoint, **not** when fetching a specific user.
     #[serde(rename = "managerNotes", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub manager_notes: Option<Option<String>>,
+    pub manager_notes: Option<Option<std::sync::Arc<str>>>,
     #[serde(rename = "lastPostReadAt", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
-    pub last_post_read_at: Option<Option<String>>,
+    pub last_post_read_at: Option<Option<std::sync::Arc<str>>>,
     #[serde(rename = "hasJoinedFromPurchase", skip_serializing_if = "Option::is_none")]
     pub has_joined_from_purchase: Option<bool>,
 }

@@ -10,27 +10,27 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TransactionSteamInfo {
     #[serde(rename = "walletInfo")]
     pub wallet_info: Box<crate::models::TransactionSteamWalletInfo>,
     /// Steam User ID
     #[serde(rename = "steamId")]
-    pub steam_id: String,
+    pub steam_id: std::sync::Arc<str>,
     /// Steam Order ID
     #[serde(rename = "orderId")]
-    pub order_id: String,
+    pub order_id: std::sync::Arc<str>,
     /// Empty
     #[serde(rename = "steamUrl")]
-    pub steam_url: String,
+    pub steam_url: std::sync::Arc<str>,
     /// Steam Transaction ID, NOT the same as VRChat TransactionID
     #[serde(rename = "transId")]
-    pub trans_id: String,
+    pub trans_id: std::sync::Arc<str>,
 }
 
 impl TransactionSteamInfo {
     /// 
-    pub fn new(wallet_info: crate::models::TransactionSteamWalletInfo, steam_id: String, order_id: String, steam_url: String, trans_id: String) -> TransactionSteamInfo {
+    pub fn new(wallet_info: crate::models::TransactionSteamWalletInfo, steam_id: std::sync::Arc<str>, order_id: std::sync::Arc<str>, steam_url: std::sync::Arc<str>, trans_id: std::sync::Arc<str>) -> TransactionSteamInfo {
         TransactionSteamInfo {
             wallet_info: Box::new(wallet_info),
             steam_id,

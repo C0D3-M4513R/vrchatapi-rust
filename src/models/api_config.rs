@@ -10,7 +10,7 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ApiConfig {
     /// Unknown, probably voice optimization testing
     #[serde(rename = "VoiceEnableDegradation")]
@@ -20,19 +20,19 @@ pub struct ApiConfig {
     pub voice_enable_receiver_limiting: bool,
     /// VRChat's office address
     #[serde(rename = "address")]
-    pub address: String,
+    pub address: std::sync::Arc<str>,
     /// Public Announcements
     #[serde(rename = "announcements")]
     pub announcements: Vec<crate::models::ApiConfigAnnouncement>,
     /// Game name
     #[serde(rename = "appName")]
-    pub app_name: String,
+    pub app_name: std::sync::Arc<str>,
     /// Build tag of the API server
     #[serde(rename = "buildVersionTag")]
-    pub build_version_tag: String,
+    pub build_version_tag: std::sync::Arc<str>,
     /// apiKey to be used for all other requests
     #[serde(rename = "clientApiKey")]
-    pub client_api_key: String,
+    pub client_api_key: std::sync::Arc<str>,
     /// Unknown
     #[serde(rename = "clientBPSCeiling")]
     pub client_bps_ceiling: i32,
@@ -47,35 +47,35 @@ pub struct ApiConfig {
     pub client_sent_count_allowance: i32,
     /// VRChat's contact email
     #[serde(rename = "contactEmail")]
-    pub contact_email: String,
+    pub contact_email: std::sync::Arc<str>,
     /// VRChat's copyright-issues-related email
     #[serde(rename = "copyrightEmail")]
-    pub copyright_email: String,
+    pub copyright_email: std::sync::Arc<str>,
     /// Current version number of the Terms of Service
     #[serde(rename = "currentTOSVersion")]
     pub current_tos_version: i32,
     #[serde(rename = "defaultAvatar")]
-    pub default_avatar: String,
+    pub default_avatar: std::sync::Arc<str>,
     #[serde(rename = "deploymentGroup")]
     pub deployment_group: crate::models::DeploymentGroup,
     /// Version number for game development build
     #[serde(rename = "devAppVersionStandalone")]
-    pub dev_app_version_standalone: String,
+    pub dev_app_version_standalone: std::sync::Arc<str>,
     /// Developer Download link
     #[serde(rename = "devDownloadLinkWindows")]
-    pub dev_download_link_windows: String,
+    pub dev_download_link_windows: std::sync::Arc<str>,
     /// Link to download the development SDK, use downloadUrls instead
     #[serde(rename = "devSdkUrl")]
-    pub dev_sdk_url: String,
+    pub dev_sdk_url: std::sync::Arc<str>,
     /// Version of the development SDK
     #[serde(rename = "devSdkVersion")]
-    pub dev_sdk_version: String,
+    pub dev_sdk_version: std::sync::Arc<str>,
     /// Version number for server development build
     #[serde(rename = "devServerVersionStandalone")]
-    pub dev_server_version_standalone: String,
+    pub dev_server_version_standalone: std::sync::Arc<str>,
     /// Unknown, \"dis\" maybe for disconnect?
     #[serde(rename = "dis-countdown")]
-    pub dis_countdown: String,
+    pub dis_countdown: std::sync::Arc<str>,
     /// Toggles if copying avatars should be disabled
     #[serde(rename = "disableAvatarCopying")]
     pub disable_avatar_copying: bool,
@@ -123,7 +123,7 @@ pub struct ApiConfig {
     pub disable_upgrade_account: bool,
     /// Download link for game on the Oculus Rift website.
     #[serde(rename = "downloadLinkWindows")]
-    pub download_link_windows: String,
+    pub download_link_windows: std::sync::Arc<str>,
     #[serde(rename = "downloadUrls")]
     pub download_urls: Box<crate::models::ApiConfigDownloadUrlList>,
     /// Array of DynamicWorldRow objects, used by the game to display the list of world rows
@@ -133,70 +133,70 @@ pub struct ApiConfig {
     pub events: Box<crate::models::ApiConfigEvents>,
     /// Unknown
     #[serde(rename = "gearDemoRoomId")]
-    pub gear_demo_room_id: String,
+    pub gear_demo_room_id: std::sync::Arc<str>,
     /// WorldID be \"offline\" on User profiles if you are not friends with that user.
     #[serde(rename = "homeWorldId")]
-    pub home_world_id: String,
+    pub home_world_id: std::sync::Arc<str>,
     /// Redirect target if you try to open the base API domain in your browser
     #[serde(rename = "homepageRedirectTarget")]
-    pub homepage_redirect_target: String,
+    pub homepage_redirect_target: std::sync::Arc<str>,
     /// WorldID be \"offline\" on User profiles if you are not friends with that user.
     #[serde(rename = "hubWorldId")]
-    pub hub_world_id: String,
+    pub hub_world_id: std::sync::Arc<str>,
     /// VRChat's job application email
     #[serde(rename = "jobsEmail")]
-    pub jobs_email: String,
+    pub jobs_email: std::sync::Arc<str>,
     /// MOTD
     #[serde(rename = "messageOfTheDay")]
-    pub message_of_the_day: String,
+    pub message_of_the_day: std::sync::Arc<str>,
     /// VRChat's moderation related email
     #[serde(rename = "moderationEmail")]
-    pub moderation_email: String,
+    pub moderation_email: std::sync::Arc<str>,
     /// Unknown
     #[serde(rename = "moderationQueryPeriod")]
     pub moderation_query_period: i32,
     /// Used in-game to notify a user they aren't allowed to select avatars in private worlds
     #[serde(rename = "notAllowedToSelectAvatarInPrivateWorldMessage")]
-    pub not_allowed_to_select_avatar_in_private_world_message: String,
+    pub not_allowed_to_select_avatar_in_private_world_message: std::sync::Arc<str>,
     /// Extra [plugin](https://doc.photonengine.com/en-us/server/current/plugins/manual) to run in each instance
     #[serde(rename = "plugin")]
-    pub plugin: String,
+    pub plugin: std::sync::Arc<str>,
     /// Version number for game release build
     #[serde(rename = "releaseAppVersionStandalone")]
-    pub release_app_version_standalone: String,
+    pub release_app_version_standalone: std::sync::Arc<str>,
     /// Link to download the release SDK
     #[serde(rename = "releaseSdkUrl")]
-    pub release_sdk_url: String,
+    pub release_sdk_url: std::sync::Arc<str>,
     /// Version of the release SDK
     #[serde(rename = "releaseSdkVersion")]
-    pub release_sdk_version: String,
+    pub release_sdk_version: std::sync::Arc<str>,
     /// Version number for server release build
     #[serde(rename = "releaseServerVersionStandalone")]
-    pub release_server_version_standalone: String,
+    pub release_server_version_standalone: std::sync::Arc<str>,
     /// Link to the developer FAQ
     #[serde(rename = "sdkDeveloperFaqUrl")]
-    pub sdk_developer_faq_url: String,
+    pub sdk_developer_faq_url: std::sync::Arc<str>,
     /// Link to the official VRChat Discord
     #[serde(rename = "sdkDiscordUrl")]
-    pub sdk_discord_url: String,
+    pub sdk_discord_url: std::sync::Arc<str>,
     /// Used in the SDK to notify a user they aren't allowed to upload avatars/worlds yet
     #[serde(rename = "sdkNotAllowedToPublishMessage")]
-    pub sdk_not_allowed_to_publish_message: String,
+    pub sdk_not_allowed_to_publish_message: std::sync::Arc<str>,
     /// Unity version supported by the SDK
     #[serde(rename = "sdkUnityVersion")]
-    pub sdk_unity_version: String,
+    pub sdk_unity_version: std::sync::Arc<str>,
     /// Server name of the API server currently responding
     #[serde(rename = "serverName")]
-    pub server_name: String,
+    pub server_name: std::sync::Arc<str>,
     /// VRChat's support email
     #[serde(rename = "supportEmail")]
-    pub support_email: String,
+    pub support_email: std::sync::Arc<str>,
     /// WorldID be \"offline\" on User profiles if you are not friends with that user.
     #[serde(rename = "timeOutWorldId")]
-    pub time_out_world_id: String,
+    pub time_out_world_id: std::sync::Arc<str>,
     /// WorldID be \"offline\" on User profiles if you are not friends with that user.
     #[serde(rename = "tutorialWorldId")]
-    pub tutorial_world_id: String,
+    pub tutorial_world_id: std::sync::Arc<str>,
     /// Unknown
     #[serde(rename = "updateRateMsMaximum")]
     pub update_rate_ms_maximum: i32,
@@ -214,7 +214,7 @@ pub struct ApiConfig {
     pub upload_analysis_percent: i32,
     /// List of allowed URLs that bypass the \"Allow untrusted URL's\" setting in-game
     #[serde(rename = "urlList")]
-    pub url_list: Vec<String>,
+    pub url_list: Vec<std::sync::Arc<str>>,
     /// Unknown
     #[serde(rename = "useReliableUdpForVoice")]
     pub use_reliable_udp_for_voice: bool,
@@ -232,24 +232,24 @@ pub struct ApiConfig {
     pub user_verification_timeout: i32,
     /// Download link for game on the Steam website.
     #[serde(rename = "viveWindowsUrl")]
-    pub vive_windows_url: String,
+    pub vive_windows_url: std::sync::Arc<str>,
     /// List of allowed URLs that are allowed to host avatar assets
     #[serde(rename = "whiteListedAssetUrls")]
-    pub white_listed_asset_urls: Vec<String>,
+    pub white_listed_asset_urls: Vec<std::sync::Arc<str>>,
     /// Unknown
     #[serde(rename = "worldUpdatePeriod")]
     pub world_update_period: i32,
     /// Currently used youtube-dl.exe hash in SHA-256-delimited format
     #[serde(rename = "player-url-resolver-hash")]
-    pub player_url_resolver_hash: String,
+    pub player_url_resolver_hash: std::sync::Arc<str>,
     /// Currently used youtube-dl.exe version
     #[serde(rename = "player-url-resolver-version")]
-    pub player_url_resolver_version: String,
+    pub player_url_resolver_version: std::sync::Arc<str>,
 }
 
 impl ApiConfig {
     /// 
-    pub fn new(voice_enable_degradation: bool, voice_enable_receiver_limiting: bool, address: String, announcements: Vec<crate::models::ApiConfigAnnouncement>, app_name: String, build_version_tag: String, client_api_key: String, client_bps_ceiling: i32, client_disconnect_timeout: i32, client_reserved_player_bps: i32, client_sent_count_allowance: i32, contact_email: String, copyright_email: String, current_tos_version: i32, default_avatar: String, deployment_group: crate::models::DeploymentGroup, dev_app_version_standalone: String, dev_download_link_windows: String, dev_sdk_url: String, dev_sdk_version: String, dev_server_version_standalone: String, dis_countdown: String, disable_avatar_copying: bool, disable_avatar_gating: bool, disable_community_labs: bool, disable_community_labs_promotion: bool, disable_email: bool, disable_event_stream: bool, disable_feedback_gating: bool, disable_frontend_builds: bool, disable_hello: bool, disable_oculus_subs: bool, disable_registration: bool, disable_steam_networking: bool, disable_two_factor_auth: bool, disable_udon: bool, disable_upgrade_account: bool, download_link_windows: String, download_urls: crate::models::ApiConfigDownloadUrlList, dynamic_world_rows: Vec<crate::models::DynamicContentRow>, events: crate::models::ApiConfigEvents, gear_demo_room_id: String, home_world_id: String, homepage_redirect_target: String, hub_world_id: String, jobs_email: String, message_of_the_day: String, moderation_email: String, moderation_query_period: i32, not_allowed_to_select_avatar_in_private_world_message: String, plugin: String, release_app_version_standalone: String, release_sdk_url: String, release_sdk_version: String, release_server_version_standalone: String, sdk_developer_faq_url: String, sdk_discord_url: String, sdk_not_allowed_to_publish_message: String, sdk_unity_version: String, server_name: String, support_email: String, time_out_world_id: String, tutorial_world_id: String, update_rate_ms_maximum: i32, update_rate_ms_minimum: i32, update_rate_ms_normal: i32, update_rate_ms_udon_manual: i32, upload_analysis_percent: i32, url_list: Vec<String>, use_reliable_udp_for_voice: bool, user_update_period: i32, user_verification_delay: i32, user_verification_retry: i32, user_verification_timeout: i32, vive_windows_url: String, white_listed_asset_urls: Vec<String>, world_update_period: i32, player_url_resolver_hash: String, player_url_resolver_version: String) -> ApiConfig {
+    pub fn new(voice_enable_degradation: bool, voice_enable_receiver_limiting: bool, address: std::sync::Arc<str>, announcements: Vec<crate::models::ApiConfigAnnouncement>, app_name: std::sync::Arc<str>, build_version_tag: std::sync::Arc<str>, client_api_key: std::sync::Arc<str>, client_bps_ceiling: i32, client_disconnect_timeout: i32, client_reserved_player_bps: i32, client_sent_count_allowance: i32, contact_email: std::sync::Arc<str>, copyright_email: std::sync::Arc<str>, current_tos_version: i32, default_avatar: std::sync::Arc<str>, deployment_group: crate::models::DeploymentGroup, dev_app_version_standalone: std::sync::Arc<str>, dev_download_link_windows: std::sync::Arc<str>, dev_sdk_url: std::sync::Arc<str>, dev_sdk_version: std::sync::Arc<str>, dev_server_version_standalone: std::sync::Arc<str>, dis_countdown: std::sync::Arc<str>, disable_avatar_copying: bool, disable_avatar_gating: bool, disable_community_labs: bool, disable_community_labs_promotion: bool, disable_email: bool, disable_event_stream: bool, disable_feedback_gating: bool, disable_frontend_builds: bool, disable_hello: bool, disable_oculus_subs: bool, disable_registration: bool, disable_steam_networking: bool, disable_two_factor_auth: bool, disable_udon: bool, disable_upgrade_account: bool, download_link_windows: std::sync::Arc<str>, download_urls: crate::models::ApiConfigDownloadUrlList, dynamic_world_rows: Vec<crate::models::DynamicContentRow>, events: crate::models::ApiConfigEvents, gear_demo_room_id: std::sync::Arc<str>, home_world_id: std::sync::Arc<str>, homepage_redirect_target: std::sync::Arc<str>, hub_world_id: std::sync::Arc<str>, jobs_email: std::sync::Arc<str>, message_of_the_day: std::sync::Arc<str>, moderation_email: std::sync::Arc<str>, moderation_query_period: i32, not_allowed_to_select_avatar_in_private_world_message: std::sync::Arc<str>, plugin: std::sync::Arc<str>, release_app_version_standalone: std::sync::Arc<str>, release_sdk_url: std::sync::Arc<str>, release_sdk_version: std::sync::Arc<str>, release_server_version_standalone: std::sync::Arc<str>, sdk_developer_faq_url: std::sync::Arc<str>, sdk_discord_url: std::sync::Arc<str>, sdk_not_allowed_to_publish_message: std::sync::Arc<str>, sdk_unity_version: std::sync::Arc<str>, server_name: std::sync::Arc<str>, support_email: std::sync::Arc<str>, time_out_world_id: std::sync::Arc<str>, tutorial_world_id: std::sync::Arc<str>, update_rate_ms_maximum: i32, update_rate_ms_minimum: i32, update_rate_ms_normal: i32, update_rate_ms_udon_manual: i32, upload_analysis_percent: i32, url_list: Vec<std::sync::Arc<str>>, use_reliable_udp_for_voice: bool, user_update_period: i32, user_verification_delay: i32, user_verification_retry: i32, user_verification_timeout: i32, vive_windows_url: std::sync::Arc<str>, white_listed_asset_urls: Vec<std::sync::Arc<str>>, world_update_period: i32, player_url_resolver_hash: std::sync::Arc<str>, player_url_resolver_version: std::sync::Arc<str>) -> ApiConfig {
         ApiConfig {
             voice_enable_degradation,
             voice_enable_receiver_limiting,

@@ -10,35 +10,35 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TransactionAgreement {
     #[serde(rename = "agreementId")]
-    pub agreement_id: String,
+    pub agreement_id: std::sync::Arc<str>,
     #[serde(rename = "itemId")]
     pub item_id: f32,
     /// This is NOT TransactionStatus, but whatever Steam return.
     #[serde(rename = "status")]
-    pub status: String,
+    pub status: std::sync::Arc<str>,
     #[serde(rename = "period")]
-    pub period: String,
+    pub period: std::sync::Arc<str>,
     #[serde(rename = "frequency")]
     pub frequency: f32,
     #[serde(rename = "billingType")]
-    pub billing_type: String,
+    pub billing_type: std::sync::Arc<str>,
     #[serde(rename = "startDate")]
-    pub start_date: String,
+    pub start_date: std::sync::Arc<str>,
     #[serde(rename = "endDate")]
-    pub end_date: String,
+    pub end_date: std::sync::Arc<str>,
     #[serde(rename = "recurringAmt")]
     pub recurring_amt: f32,
     #[serde(rename = "currency")]
-    pub currency: String,
+    pub currency: std::sync::Arc<str>,
     #[serde(rename = "timeCreated")]
-    pub time_created: String,
+    pub time_created: std::sync::Arc<str>,
     #[serde(rename = "nextPayment")]
-    pub next_payment: String,
+    pub next_payment: std::sync::Arc<str>,
     #[serde(rename = "lastPayment")]
-    pub last_payment: String,
+    pub last_payment: std::sync::Arc<str>,
     #[serde(rename = "lastAmount")]
     pub last_amount: f32,
     #[serde(rename = "lastAmountVat")]
@@ -51,7 +51,7 @@ pub struct TransactionAgreement {
 
 impl TransactionAgreement {
     /// 
-    pub fn new(agreement_id: String, item_id: f32, status: String, period: String, frequency: f32, billing_type: String, start_date: String, end_date: String, recurring_amt: f32, currency: String, time_created: String, next_payment: String, last_payment: String, last_amount: f32, last_amount_vat: f32, outstanding: f32, failed_attempts: f32) -> TransactionAgreement {
+    pub fn new(agreement_id: std::sync::Arc<str>, item_id: f32, status: std::sync::Arc<str>, period: std::sync::Arc<str>, frequency: f32, billing_type: std::sync::Arc<str>, start_date: std::sync::Arc<str>, end_date: std::sync::Arc<str>, recurring_amt: f32, currency: std::sync::Arc<str>, time_created: std::sync::Arc<str>, next_payment: std::sync::Arc<str>, last_payment: std::sync::Arc<str>, last_amount: f32, last_amount_vat: f32, outstanding: f32, failed_attempts: f32) -> TransactionAgreement {
         TransactionAgreement {
             agreement_id,
             item_id,

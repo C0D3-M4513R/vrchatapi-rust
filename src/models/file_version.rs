@@ -10,10 +10,10 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct FileVersion {
     #[serde(rename = "created_at")]
-    pub created_at: String,
+    pub created_at: std::sync::Arc<str>,
     /// Usually only present if `true`
     #[serde(rename = "deleted", skip_serializing_if = "Option::is_none")]
     pub deleted: Option<bool>,
@@ -32,7 +32,7 @@ pub struct FileVersion {
 
 impl FileVersion {
     /// 
-    pub fn new(created_at: String, status: crate::models::FileStatus, version: i32) -> FileVersion {
+    pub fn new(created_at: std::sync::Arc<str>, status: crate::models::FileStatus, version: i32) -> FileVersion {
         FileVersion {
             created_at,
             deleted: None,

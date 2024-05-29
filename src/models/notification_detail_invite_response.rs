@@ -9,16 +9,16 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct NotificationDetailInviteResponse {
     #[serde(rename = "inResponseTo")]
-    pub in_response_to: String,
+    pub in_response_to: std::sync::Arc<str>,
     #[serde(rename = "responseMessage")]
-    pub response_message: String,
+    pub response_message: std::sync::Arc<str>,
 }
 
 impl NotificationDetailInviteResponse {
-    pub fn new(in_response_to: String, response_message: String) -> NotificationDetailInviteResponse {
+    pub fn new(in_response_to: std::sync::Arc<str>, response_message: std::sync::Arc<str>) -> NotificationDetailInviteResponse {
         NotificationDetailInviteResponse {
             in_response_to,
             response_message,

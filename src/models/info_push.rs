@@ -10,10 +10,10 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct InfoPush {
     #[serde(rename = "id")]
-    pub id: String,
+    pub id: std::sync::Arc<str>,
     #[serde(rename = "isEnabled")]
     pub is_enabled: bool,
     #[serde(rename = "releaseStatus")]
@@ -27,21 +27,21 @@ pub struct InfoPush {
     pub data: Box<crate::models::InfoPushData>,
     /// Unknown usage, MD5
     #[serde(rename = "hash")]
-    pub hash: String,
+    pub hash: std::sync::Arc<str>,
     #[serde(rename = "createdAt")]
-    pub created_at: String,
+    pub created_at: std::sync::Arc<str>,
     #[serde(rename = "updatedAt")]
-    pub updated_at: String,
+    pub updated_at: std::sync::Arc<str>,
     /// 
     #[serde(rename = "startDate", skip_serializing_if = "Option::is_none")]
-    pub start_date: Option<String>,
+    pub start_date: Option<std::sync::Arc<str>>,
     #[serde(rename = "endDate", skip_serializing_if = "Option::is_none")]
-    pub end_date: Option<String>,
+    pub end_date: Option<std::sync::Arc<str>>,
 }
 
 impl InfoPush {
     /// 
-    pub fn new(id: String, is_enabled: bool, release_status: crate::models::ReleaseStatus, priority: i32, tags: Vec<crate::models::tags::Tags>, data: crate::models::InfoPushData, hash: String, created_at: String, updated_at: String) -> InfoPush {
+    pub fn new(id: std::sync::Arc<str>, is_enabled: bool, release_status: crate::models::ReleaseStatus, priority: i32, tags: Vec<crate::models::tags::Tags>, data: crate::models::InfoPushData, hash: std::sync::Arc<str>, created_at: std::sync::Arc<str>, updated_at: std::sync::Arc<str>) -> InfoPush {
         InfoPush {
             id,
             is_enabled,

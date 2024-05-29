@@ -9,14 +9,14 @@
 
 
 
-#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TwoFactorAuthCode {
     #[serde(rename = "code")]
-    pub code: String,
+    pub code: std::sync::Arc<str>,
 }
 
 impl TwoFactorAuthCode {
-    pub fn new(code: String) -> TwoFactorAuthCode {
+    pub fn new(code: std::sync::Arc<str>) -> TwoFactorAuthCode {
         TwoFactorAuthCode {
             code,
         }
