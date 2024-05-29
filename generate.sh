@@ -35,5 +35,13 @@ cat patches/2FA_Current_User.rs >> src/models/current_user.rs
 sed -i 's/pub use self::current_user::CurrentUser;/pub use self::current_user::{EitherUserOrTwoFactor, CurrentUser};/g' src/models/mod.rs
 sed -i 's/Result<models::CurrentUser, Error<GetCurrentUserError>>/Result<models::EitherUserOrTwoFactor, Error<GetCurrentUserError>>/g' src/apis/authentication_api.rs
 
+#Add tag parsing
+cp patches/tags.rs src/models
+echo "pub mod tags;" >> src/models/mod.rs
+sed -i 's/tags: Vec<String>/tags: Vec<crate::models::tags::Tags>/g' src/models/*.rs
+echo "" >> Cargo.toml
+echo "[dependencies.log]" >> Cargo.toml
+echo "version = \"0.4\"" >> Cargo.toml
+
 cargo build
 cargo test
