@@ -25,10 +25,10 @@ find src -type f -exec sed -i '/The version of the OpenAPI document/d' {} \;
 sed -i 's/reqwest::Client::new()/std::sync::Arc::new(reqwest::Client::builder().cookie_store(true).build().unwrap())/g' src/apis/configuration.rs
 sed -i 's/features = \["json", "multipart"\]/features = \["json", "cookies", "multipart"\]/g' Cargo.toml
 
+#Allow custom client wrappers (e.g. for Global Concurrency or Rate Limiting)
 shopt -s extglob
 sed -i 's/Configuration/Configuration<impl std::ops::Deref<Target = reqwest::Client> + Clone + core::fmt::Debug>/g' src/apis/!(configuration).rs
 shopt -u extglob
-
 sed -i 's/struct Configuration/struct Configuration<T>/g' src/apis/configuration.rs
 sed -i 's/pub client: reqwest::Client,/pub client: T,/g' src/apis/configuration.rs
 sed -i 's/impl Configuration/impl <T> Configuration<T>/g' src/apis/configuration.rs
@@ -90,13 +90,16 @@ sed -Ezi "s/\s+let local_var_client = &local_var_configuration.client;\s+/\n    
 sed -i "s/local_var_client/local_var_configuration.client/g" src/apis/*.rs
 sed -i "s/local_var_configuration/configuration/g" src/apis/*.rs
 sed -i "s/let mut local_var_req_builder/#[allow(unused_mut)] let mut local_var_req_builder/g" src/apis/*.rs
-cp patches/tags.rs src/models
 
+#actually deserialize tags
+cp patches/tags.rs src/models
 echo "pub mod tags;" >> src/models/mod.rs
 sed -i 's/tags: Vec<String>/tags: Vec<crate::models::tags::Tags>/g' src/models/*.rs
+#replace Strings with Arc<str> in tradeoff to Default impls
 sed -Ei 's/(:[a-zA-Z0-9 \-_<>]*)String/\1std::sync::Arc<str>/g' src/models/*.rs
 sed -Ei 's/serde = "(.*)"/serde = {version = "\1", features = ["rc"]}/g' Cargo.toml
 sed -Ei 's/#\[derive\((.*)(, )?Default(, )?/#[derive(\1/g' src/models/*.rs
+#add log crate. Used by tag impl
 echo "" >> Cargo.toml
 echo "[dependencies.log]" >> Cargo.toml
 echo "version = \"0.4\"" >> Cargo.toml
