@@ -94,6 +94,9 @@ cp patches/tags.rs src/models
 
 echo "pub mod tags;" >> src/models/mod.rs
 sed -i 's/tags: Vec<String>/tags: Vec<crate::models::tags::Tags>/g' src/models/*.rs
+sed -Ei 's/(:[a-zA-Z0-9 \-_<>]*)String/\1std::sync::Arc<str>/g' src/models/*.rs
+sed -Ei 's/serde = "(.*)"/serde = {version = "\1", features = ["rc"]}/g' Cargo.toml
+sed -Ei 's/#\[derive\((.*)(, )?Default(, )?/#[derive(\1/g' src/models/*.rs
 echo "" >> Cargo.toml
 echo "[dependencies.log]" >> Cargo.toml
 echo "version = \"0.4\"" >> Cargo.toml
