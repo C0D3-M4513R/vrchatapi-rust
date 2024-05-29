@@ -35,13 +35,15 @@ cat patches/2FA_Current_User.rs >> src/models/current_user.rs
 sed -i 's/pub use self::current_user::CurrentUser;/pub use self::current_user::{EitherUserOrTwoFactor, CurrentUser};/g' src/models/mod.rs
 sed -i 's/Result<models::CurrentUser, Error<GetCurrentUserError>>/Result<models::EitherUserOrTwoFactor, Error<GetCurrentUserError>>/g' src/apis/authentication_api.rs
 
-#Add tag parsing
+#actually deserialize tags
 cp patches/tags.rs src/models
 echo "pub mod tags;" >> src/models/mod.rs
 sed -i 's/tags: Vec<String>/tags: Vec<crate::models::tags::Tags>/g' src/models/*.rs
+#replace Strings with Arc<str> in tradeoff to Default impls
 sed -Ei 's/(:[a-zA-Z0-9 \-_<>]*)String/\1std::sync::Arc<str>/g' src/models/*.rs
 sed -Ei 's/serde = "(.*)"/serde = {version = "\1", features = ["rc"]}/g' Cargo.toml
 sed -Ei 's/#\[derive\((.*)(, )?Default(, )?/#[derive(\1/g' src/models/*.rs
+#add log crate. Used by tag impl
 echo "" >> Cargo.toml
 echo "[dependencies.log]" >> Cargo.toml
 echo "version = \"0.4\"" >> Cargo.toml
