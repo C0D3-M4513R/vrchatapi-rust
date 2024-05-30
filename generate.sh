@@ -23,7 +23,7 @@ find src -type f -exec sed -i '/The version of the OpenAPI document/d' {} \;
 
 # Cookie storage & Rate Limiting
 sed -i 's/reqwest::Client::new()/std::sync::Arc::new(reqwest::Client::builder().cookie_store(true).build().unwrap())/g' src/apis/configuration.rs
-sed -i 's/features = \["json", "multipart"\]/features = \["json", "cookies", "multipart"\]/g' Cargo.toml
+sed -zi 's/\[dependencies\.reqwest\]\s\+version\s\+=\s\+"^0\.11"\s\+features\s\+=\s\+\["json",\s\+"multipart"\]/[dependencies.reqwest]\nversion = "0.12"\nfeatures = \["json", "cookies", "multipart"\]/g' Cargo.toml
 
 #Allow custom client wrappers (e.g. for Global Concurrency or Rate Limiting)
 shopt -s extglob
