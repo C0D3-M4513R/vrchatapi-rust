@@ -278,3 +278,4 @@ pub mod world_metadata;
 pub use self::world_metadata::WorldMetadata;
 pub mod world_publish_status;
 pub use self::world_publish_status::WorldPublishStatus;
+pub mod tags;

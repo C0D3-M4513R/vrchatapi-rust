@@ -10,21 +10,21 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 /// Favorite : 
-#[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Favorite {
     /// MUST be either AvatarID, UserID or WorldID.
     #[serde(rename = "favoriteId")]
-    pub favorite_id: String,
+    pub favorite_id: std::sync::Arc<str>,
     #[serde(rename = "id")]
-    pub id: String,
+    pub id: std::sync::Arc<str>,
     #[serde(rename = "tags")]
-    pub tags: Vec<String>,
+    pub tags: Vec<crate::models::tags::Tags>,
     #[serde(rename = "type")]
     pub r#type: models::FavoriteType,
 }
 
 impl Favorite {
-    pub fn new(favorite_id: String, id: String, tags: Vec<String>, r#type: models::FavoriteType) -> Favorite {
+    pub fn new(favorite_id: std::sync::Arc<str>, id: std::sync::Arc<str>, tags: Vec<crate::models::tags::Tags>, r#type: models::FavoriteType) -> Favorite {
         Favorite {
             favorite_id,
             id,

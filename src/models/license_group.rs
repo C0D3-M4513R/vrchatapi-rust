@@ -10,20 +10,20 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 /// LicenseGroup : 
-#[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct LicenseGroup {
     #[serde(rename = "id")]
-    pub id: String,
+    pub id: std::sync::Arc<str>,
     #[serde(rename = "name")]
-    pub name: String,
+    pub name: std::sync::Arc<str>,
     #[serde(rename = "description")]
-    pub description: String,
+    pub description: std::sync::Arc<str>,
     #[serde(rename = "licenses")]
     pub licenses: Vec<models::License>,
 }
 
 impl LicenseGroup {
-    pub fn new(id: String, name: String, description: String, licenses: Vec<models::License>) -> LicenseGroup {
+    pub fn new(id: std::sync::Arc<str>, name: std::sync::Arc<str>, description: std::sync::Arc<str>, licenses: Vec<models::License>) -> LicenseGroup {
         LicenseGroup {
             id,
             name,

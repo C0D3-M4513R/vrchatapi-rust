@@ -9,13 +9,13 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct GroupInstance {
     #[serde(rename = "instanceId")]
-    pub instance_id: String,
+    pub instance_id: std::sync::Arc<str>,
     /// InstanceID can be \"offline\" on User profiles if you are not friends with that user and \"private\" if you are friends and user is in private instance.
     #[serde(rename = "location")]
-    pub location: String,
+    pub location: std::sync::Arc<str>,
     #[serde(rename = "world")]
     pub world: Box<models::World>,
     #[serde(rename = "memberCount")]
@@ -23,7 +23,7 @@ pub struct GroupInstance {
 }
 
 impl GroupInstance {
-    pub fn new(instance_id: String, location: String, world: models::World, member_count: i32) -> GroupInstance {
+    pub fn new(instance_id: std::sync::Arc<str>, location: std::sync::Arc<str>, world: models::World, member_count: i32) -> GroupInstance {
         GroupInstance {
             instance_id,
             location,

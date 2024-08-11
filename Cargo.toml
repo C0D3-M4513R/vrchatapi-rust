@@ -7,7 +7,7 @@ license = "MIT"
 edition = "2021"
 
 [dependencies]
-serde = { version = "^1.0", features = ["derive"] }
+serde = {version = "^1.0", features = ["rc", "derive"] }
 serde_with = { version = "^3.8", default-features = false, features = ["base64", "std", "macros"] }
 serde_json = "^1.0"
 url = "^2.5"
@@ -16,3 +16,5 @@ reqwest = { version = "^0.12", features = ["json", "cookies", "multipart"] }
 
 [dev-dependencies]
 tokio = { version = '1', features = ['macros', 'rt-multi-thread'] }
+[dependencies.log]
+version = "0.4"

@@ -9,16 +9,16 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct InstanceShortNameResponse {
     #[serde(rename = "secureName")]
-    pub secure_name: String,
+    pub secure_name: std::sync::Arc<str>,
     #[serde(rename = "shortName", skip_serializing_if = "Option::is_none")]
-    pub short_name: Option<String>,
+    pub short_name: Option<std::sync::Arc<str>>,
 }
 
 impl InstanceShortNameResponse {
-    pub fn new(secure_name: String) -> InstanceShortNameResponse {
+    pub fn new(secure_name: std::sync::Arc<str>) -> InstanceShortNameResponse {
         InstanceShortNameResponse {
             secure_name,
             short_name: None,

@@ -10,37 +10,37 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 /// TransactionAgreement : Represents a single Transaction, which is likely between VRChat and Steam.
-#[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct TransactionAgreement {
     #[serde(rename = "agreementId")]
-    pub agreement_id: String,
+    pub agreement_id: std::sync::Arc<str>,
     #[serde(rename = "itemId")]
     pub item_id: f64,
     #[serde(rename = "agreement")]
-    pub agreement: String,
+    pub agreement: std::sync::Arc<str>,
     /// This is NOT TransactionStatus, but whatever Steam return.
     #[serde(rename = "status")]
-    pub status: String,
+    pub status: std::sync::Arc<str>,
     #[serde(rename = "period")]
-    pub period: String,
+    pub period: std::sync::Arc<str>,
     #[serde(rename = "frequency")]
     pub frequency: f64,
     #[serde(rename = "billingType")]
-    pub billing_type: String,
+    pub billing_type: std::sync::Arc<str>,
     #[serde(rename = "startDate")]
-    pub start_date: String,
+    pub start_date: std::sync::Arc<str>,
     #[serde(rename = "endDate")]
-    pub end_date: String,
+    pub end_date: std::sync::Arc<str>,
     #[serde(rename = "recurringAmt")]
     pub recurring_amt: f64,
     #[serde(rename = "currency")]
-    pub currency: String,
+    pub currency: std::sync::Arc<str>,
     #[serde(rename = "timeCreated")]
-    pub time_created: String,
+    pub time_created: std::sync::Arc<str>,
     #[serde(rename = "nextPayment")]
-    pub next_payment: String,
+    pub next_payment: std::sync::Arc<str>,
     #[serde(rename = "lastPayment")]
-    pub last_payment: String,
+    pub last_payment: std::sync::Arc<str>,
     #[serde(rename = "lastAmount")]
     pub last_amount: f64,
     #[serde(rename = "lastAmountVat")]
@@ -53,7 +53,7 @@ pub struct TransactionAgreement {
 
 impl TransactionAgreement {
     /// Represents a single Transaction, which is likely between VRChat and Steam.
-    pub fn new(agreement_id: String, item_id: f64, agreement: String, status: String, period: String, frequency: f64, billing_type: String, start_date: String, end_date: String, recurring_amt: f64, currency: String, time_created: String, next_payment: String, last_payment: String, last_amount: f64, last_amount_vat: f64, outstanding: f64, failed_attempts: f64) -> TransactionAgreement {
+    pub fn new(agreement_id: std::sync::Arc<str>, item_id: f64, agreement: std::sync::Arc<str>, status: std::sync::Arc<str>, period: std::sync::Arc<str>, frequency: f64, billing_type: std::sync::Arc<str>, start_date: std::sync::Arc<str>, end_date: std::sync::Arc<str>, recurring_amt: f64, currency: std::sync::Arc<str>, time_created: std::sync::Arc<str>, next_payment: std::sync::Arc<str>, last_payment: std::sync::Arc<str>, last_amount: f64, last_amount_vat: f64, outstanding: f64, failed_attempts: f64) -> TransactionAgreement {
         TransactionAgreement {
             agreement_id,
             item_id,

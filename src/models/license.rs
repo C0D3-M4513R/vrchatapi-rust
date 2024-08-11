@@ -9,21 +9,21 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct License {
     /// Either a AvatarID, LicenseGroupID, PermissionID or ProductID. This depends on the `forType` field.
     #[serde(rename = "forId")]
-    pub for_id: String,
+    pub for_id: std::sync::Arc<str>,
     #[serde(rename = "forType")]
     pub for_type: models::LicenseType,
     #[serde(rename = "forName")]
-    pub for_name: String,
+    pub for_name: std::sync::Arc<str>,
     #[serde(rename = "forAction")]
     pub for_action: models::LicenseAction,
 }
 
 impl License {
-    pub fn new(for_id: String, for_type: models::LicenseType, for_name: String, for_action: models::LicenseAction) -> License {
+    pub fn new(for_id: std::sync::Arc<str>, for_type: models::LicenseType, for_name: std::sync::Arc<str>, for_action: models::LicenseAction) -> License {
         License {
             for_id,
             for_type,

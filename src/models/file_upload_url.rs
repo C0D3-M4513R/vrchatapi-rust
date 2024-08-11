@@ -10,14 +10,14 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 /// FileUploadUrl : 
-#[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct FileUploadUrl {
     #[serde(rename = "url")]
-    pub url: String,
+    pub url: std::sync::Arc<str>,
 }
 
 impl FileUploadUrl {
-    pub fn new(url: String) -> FileUploadUrl {
+    pub fn new(url: std::sync::Arc<str>) -> FileUploadUrl {
         FileUploadUrl {
             url,
         }

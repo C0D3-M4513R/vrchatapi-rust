@@ -10,24 +10,24 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 /// Subscription : 
-#[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct Subscription {
     #[serde(rename = "id")]
-    pub id: String,
+    pub id: std::sync::Arc<str>,
     #[serde(rename = "steamItemId")]
-    pub steam_item_id: String,
+    pub steam_item_id: std::sync::Arc<str>,
     #[serde(rename = "oculusSku", skip_serializing_if = "Option::is_none")]
-    pub oculus_sku: Option<String>,
+    pub oculus_sku: Option<std::sync::Arc<str>>,
     #[serde(rename = "googleProductId", skip_serializing_if = "Option::is_none")]
-    pub google_product_id: Option<String>,
+    pub google_product_id: Option<std::sync::Arc<str>>,
     #[serde(rename = "googlePlanId", skip_serializing_if = "Option::is_none")]
-    pub google_plan_id: Option<String>,
+    pub google_plan_id: Option<std::sync::Arc<str>>,
     #[serde(rename = "picoSku", skip_serializing_if = "Option::is_none")]
-    pub pico_sku: Option<String>,
+    pub pico_sku: Option<std::sync::Arc<str>>,
     #[serde(rename = "amount")]
     pub amount: f64,
     #[serde(rename = "description")]
-    pub description: String,
+    pub description: std::sync::Arc<str>,
     #[serde(rename = "period")]
     pub period: models::SubscriptionPeriod,
     #[serde(rename = "tier")]
@@ -35,7 +35,7 @@ pub struct Subscription {
 }
 
 impl Subscription {
-    pub fn new(id: String, steam_item_id: String, amount: f64, description: String, period: models::SubscriptionPeriod, tier: f64) -> Subscription {
+    pub fn new(id: std::sync::Arc<str>, steam_item_id: std::sync::Arc<str>, amount: f64, description: std::sync::Arc<str>, period: models::SubscriptionPeriod, tier: f64) -> Subscription {
         Subscription {
             id,
             steam_item_id,

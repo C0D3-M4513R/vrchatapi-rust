@@ -9,14 +9,14 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct UpdateGroupMemberRequest {
     #[serde(rename = "visibility", skip_serializing_if = "Option::is_none")]
     pub visibility: Option<models::GroupUserVisibility>,
     #[serde(rename = "isSubscribedToAnnouncements", skip_serializing_if = "Option::is_none")]
     pub is_subscribed_to_announcements: Option<bool>,
     #[serde(rename = "managerNotes", skip_serializing_if = "Option::is_none")]
-    pub manager_notes: Option<String>,
+    pub manager_notes: Option<std::sync::Arc<str>>,
 }
 
 impl UpdateGroupMemberRequest {

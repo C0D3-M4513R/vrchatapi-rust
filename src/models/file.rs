@@ -10,27 +10,27 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 /// File : 
-#[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct File {
     #[serde(rename = "extension")]
-    pub extension: String,
+    pub extension: std::sync::Arc<str>,
     #[serde(rename = "id")]
-    pub id: String,
+    pub id: std::sync::Arc<str>,
     #[serde(rename = "mimeType")]
     pub mime_type: models::MimeType,
     #[serde(rename = "name")]
-    pub name: String,
+    pub name: std::sync::Arc<str>,
     /// A users unique ID, usually in the form of `usr_c1644b5b-3ca4-45b4-97c6-a2a0de70d469`. Legacy players can have old IDs in the form of `8JoV9XEdpo`. The ID can never be changed.
     #[serde(rename = "ownerId")]
-    pub owner_id: String,
+    pub owner_id: std::sync::Arc<str>,
     #[serde(rename = "tags")]
-    pub tags: Vec<String>,
+    pub tags: Vec<crate::models::tags::Tags>,
     #[serde(rename = "versions")]
     pub versions: Vec<models::FileVersion>,
 }
 
 impl File {
-    pub fn new(extension: String, id: String, mime_type: models::MimeType, name: String, owner_id: String, tags: Vec<String>, versions: Vec<models::FileVersion>) -> File {
+    pub fn new(extension: std::sync::Arc<str>, id: std::sync::Arc<str>, mime_type: models::MimeType, name: std::sync::Arc<str>, owner_id: std::sync::Arc<str>, tags: Vec<crate::models::tags::Tags>, versions: Vec<models::FileVersion>) -> File {
         File {
             extension,
             id,

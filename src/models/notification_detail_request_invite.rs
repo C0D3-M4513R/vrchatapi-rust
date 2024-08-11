@@ -9,14 +9,14 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct NotificationDetailRequestInvite {
     /// TODO: Does this still exist?
     #[serde(rename = "platform", skip_serializing_if = "Option::is_none")]
-    pub platform: Option<String>,
+    pub platform: Option<std::sync::Arc<str>>,
     /// Used when using InviteMessage Slot.
     #[serde(rename = "requestMessage", skip_serializing_if = "Option::is_none")]
-    pub request_message: Option<String>,
+    pub request_message: Option<std::sync::Arc<str>>,
 }
 
 impl NotificationDetailRequestInvite {

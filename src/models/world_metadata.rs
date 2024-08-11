@@ -9,17 +9,17 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct WorldMetadata {
     /// WorldID be \"offline\" on User profiles if you are not friends with that user.
     #[serde(rename = "id")]
-    pub id: String,
+    pub id: std::sync::Arc<str>,
     #[serde(rename = "metadata")]
     pub metadata: serde_json::Value,
 }
 
 impl WorldMetadata {
-    pub fn new(id: String, metadata: serde_json::Value) -> WorldMetadata {
+    pub fn new(id: std::sync::Arc<str>, metadata: serde_json::Value) -> WorldMetadata {
         WorldMetadata {
             id,
             metadata,

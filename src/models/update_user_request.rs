@@ -9,31 +9,31 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct UpdateUserRequest {
     #[serde(rename = "email", skip_serializing_if = "Option::is_none")]
-    pub email: Option<String>,
+    pub email: Option<std::sync::Arc<str>>,
     #[serde(rename = "birthday", skip_serializing_if = "Option::is_none")]
-    pub birthday: Option<String>,
+    pub birthday: Option<std::sync::Arc<str>>,
     #[serde(rename = "acceptedTOSVersion", skip_serializing_if = "Option::is_none")]
     pub accepted_tos_version: Option<f64>,
     #[serde(rename = "tags", skip_serializing_if = "Option::is_none")]
-    pub tags: Option<Vec<String>>,
+    pub tags: Option<Vec<std::sync::Arc<str>>>,
     #[serde(rename = "status", skip_serializing_if = "Option::is_none")]
     pub status: Option<models::UserStatus>,
     #[serde(rename = "statusDescription", skip_serializing_if = "Option::is_none")]
-    pub status_description: Option<String>,
+    pub status_description: Option<std::sync::Arc<str>>,
     #[serde(rename = "bio", skip_serializing_if = "Option::is_none")]
-    pub bio: Option<String>,
+    pub bio: Option<std::sync::Arc<str>>,
     #[serde(rename = "bioLinks", skip_serializing_if = "Option::is_none")]
-    pub bio_links: Option<Vec<String>>,
+    pub bio_links: Option<Vec<std::sync::Arc<str>>>,
     #[serde(rename = "pronouns", skip_serializing_if = "Option::is_none")]
-    pub pronouns: Option<String>,
+    pub pronouns: Option<std::sync::Arc<str>>,
     #[serde(rename = "isBoopingEnabled", skip_serializing_if = "Option::is_none")]
     pub is_booping_enabled: Option<bool>,
     /// MUST be a valid VRChat /file/ url.
     #[serde(rename = "userIcon", skip_serializing_if = "Option::is_none")]
-    pub user_icon: Option<String>,
+    pub user_icon: Option<std::sync::Arc<str>>,
 }
 
 impl UpdateUserRequest {

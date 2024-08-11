@@ -10,21 +10,21 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 /// FavoriteGroup : 
-#[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct FavoriteGroup {
     #[serde(rename = "displayName")]
-    pub display_name: String,
+    pub display_name: std::sync::Arc<str>,
     #[serde(rename = "id")]
-    pub id: String,
+    pub id: std::sync::Arc<str>,
     #[serde(rename = "name")]
-    pub name: String,
+    pub name: std::sync::Arc<str>,
     #[serde(rename = "ownerDisplayName")]
-    pub owner_display_name: String,
+    pub owner_display_name: std::sync::Arc<str>,
     /// A users unique ID, usually in the form of `usr_c1644b5b-3ca4-45b4-97c6-a2a0de70d469`. Legacy players can have old IDs in the form of `8JoV9XEdpo`. The ID can never be changed.
     #[serde(rename = "ownerId")]
-    pub owner_id: String,
+    pub owner_id: std::sync::Arc<str>,
     #[serde(rename = "tags")]
-    pub tags: Vec<String>,
+    pub tags: Vec<crate::models::tags::Tags>,
     #[serde(rename = "type")]
     pub r#type: models::FavoriteType,
     #[serde(rename = "visibility")]
@@ -32,7 +32,7 @@ pub struct FavoriteGroup {
 }
 
 impl FavoriteGroup {
-    pub fn new(display_name: String, id: String, name: String, owner_display_name: String, owner_id: String, tags: Vec<String>, r#type: models::FavoriteType, visibility: models::FavoriteGroupVisibility) -> FavoriteGroup {
+    pub fn new(display_name: std::sync::Arc<str>, id: std::sync::Arc<str>, name: std::sync::Arc<str>, owner_display_name: std::sync::Arc<str>, owner_id: std::sync::Arc<str>, tags: Vec<crate::models::tags::Tags>, r#type: models::FavoriteType, visibility: models::FavoriteGroupVisibility) -> FavoriteGroup {
         FavoriteGroup {
             display_name,
             id,

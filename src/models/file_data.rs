@@ -10,26 +10,26 @@ use crate::models;
 use serde::{Deserialize, Serialize};
 
 /// FileData : 
-#[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct FileData {
     #[serde(rename = "category")]
     pub category: Category,
     #[serde(rename = "fileName")]
-    pub file_name: String,
+    pub file_name: std::sync::Arc<str>,
     #[serde(rename = "md5", skip_serializing_if = "Option::is_none")]
-    pub md5: Option<String>,
+    pub md5: Option<std::sync::Arc<str>>,
     #[serde(rename = "sizeInBytes")]
     pub size_in_bytes: i32,
     #[serde(rename = "status")]
     pub status: models::FileStatus,
     #[serde(rename = "uploadId")]
-    pub upload_id: String,
+    pub upload_id: std::sync::Arc<str>,
     #[serde(rename = "url")]
-    pub url: String,
+    pub url: std::sync::Arc<str>,
 }
 
 impl FileData {
-    pub fn new(category: Category, file_name: String, size_in_bytes: i32, status: models::FileStatus, upload_id: String, url: String) -> FileData {
+    pub fn new(category: Category, file_name: std::sync::Arc<str>, size_in_bytes: i32, status: models::FileStatus, upload_id: std::sync::Arc<str>, url: std::sync::Arc<str>) -> FileData {
         FileData {
             category,
             file_name,

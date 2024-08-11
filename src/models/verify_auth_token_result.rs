@@ -9,16 +9,16 @@
 use crate::models;
 use serde::{Deserialize, Serialize};
 
-#[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct VerifyAuthTokenResult {
     #[serde(rename = "ok")]
     pub ok: bool,
     #[serde(rename = "token")]
-    pub token: String,
+    pub token: std::sync::Arc<str>,
 }
 
 impl VerifyAuthTokenResult {
-    pub fn new(ok: bool, token: String) -> VerifyAuthTokenResult {
+    pub fn new(ok: bool, token: std::sync::Arc<str>) -> VerifyAuthTokenResult {
         VerifyAuthTokenResult {
             ok,
             token,
